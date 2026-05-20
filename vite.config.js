@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Add this base property:
-  base: '/my_portfolio/', 
+  base: '/', // Changed from './' to '/' for clean root URL asset mapping on Vercel
 })
