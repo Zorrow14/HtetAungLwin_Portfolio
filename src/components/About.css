@@ -1,0 +1,44 @@
+.about-section {
+  padding-top: 100px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+}
+
+.section-title span {
+  font-size: 2rem;
+  margin-right: 15px;
+  font-weight: 400;
+}
+
+.about-content {
+  padding: 40px;
+  margin-top: 20px;
+  display: flex;
+  gap: 50px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.education-box {
+  margin-top: 30px;
+  padding-left: 20px;
+  border-left: 2px solid var(--neon-cyan);
+}
+
+.education-box h3 {
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.education-box .date {
+  color: var(--electric-purple);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}

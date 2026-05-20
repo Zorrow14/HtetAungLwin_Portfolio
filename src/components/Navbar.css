@@ -1,0 +1,119 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 25px 10%;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: navbarEntrance 1s ease-out forwards;
+}
+
+.navbar.scrolled {
+  padding: 14px 10%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(10, 10, 15, 0.9), 0 1px 15px rgba(0, 243, 255, 0.1);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 800;
+  cursor: pointer;
+  letter-spacing: -1px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  text-shadow: 0 0 15px rgba(0, 243, 255, 0.6), 0 0 30px rgba(188, 19, 254, 0.4);
+  transform: scale(1.05);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+/* Futuristic tracking underline animation */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--electric-purple));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.nav-links a:hover {
+  color: var(--neon-cyan);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links .btn {
+  padding: 8px 20px;
+  font-size: 0.95rem;
+}
+
+/* Entrance Animations */
+@keyframes navbarEntrance {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 5%;
+  }
+  .navbar.scrolled {
+    padding: 12px 5%;
+  }
+  .nav-links {
+    gap: 15px;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+  }
+  .logo {
+    font-size: 1.6rem;
+  }
+}
+
