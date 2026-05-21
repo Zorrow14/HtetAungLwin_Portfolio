@@ -4,7 +4,7 @@ import './Contact.css';
 const Contact = () => {
   return (
     <section id="contact" className="contact-section animate-on-scroll reveal-up">
-      <h2 className="section-title"><span className="gradient-text">04.</span> Get In Touch</h2>
+      <h2 className="section-title"><span className="gradient-text">05.</span> Get In Touch</h2>
       <div className="contact-content glass-panel animate-on-scroll reveal-scale delay-1">
         <p>
           I am currently looking for new opportunities and my inbox is always open. 

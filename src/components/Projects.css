@@ -1,184 +1,100 @@
-/* ── ProjectDemo.css ────────────────────────────────────────────── */
+/* ── Projects.css ────────────────────────────────────────────────── */
 
-.demo-section {
-  padding-top: 100px;
+.projects-section {
+  padding-top: 120px;
 }
 
-.demo-subtitle {
+/* ── Grid ────────────────────────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────── */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 44px 28px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 20px;
+  min-height: 280px;
+}
+
+.project-card:hover h3 {
+  color: var(--neon-cyan);
+}
+
+/* ── Content inside card ─────────────────────────────────────────── */
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.project-content h3 {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  transition: color 0.3s ease;
+  line-height: 1.3;
+}
+
+.project-content p {
   color: var(--text-secondary);
-  margin-top: 8px;
-  margin-bottom: 40px;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  flex: 1;
 }
 
-/* ── Tabs ────────────────────────────────────────────────────────── */
-.demo-tabs {
+/* ── Tech stack badges ───────────────────────────────────────────── */
+.tech-stack {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
-.demo-tab {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
+.tech-item {
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--glass-border);
   border-radius: 6px;
-  padding: 10px 18px;
-  color: var(--text-secondary);
+  padding: 4px 12px;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.25s ease;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  transition: border-color 0.25s ease, color 0.25s ease;
 }
 
-.demo-tab:hover {
-  border-color: rgba(0, 243, 255, 0.35);
+.project-card:hover .tech-item {
+  border-color: rgba(0, 243, 255, 0.25);
   color: var(--text-primary);
 }
 
-.demo-tab.active {
-  border-color: var(--neon-cyan);
-  color: var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.06);
-  box-shadow: 0 0 12px rgba(0, 243, 255, 0.15);
-}
-
-.tab-number {
-  font-size: 0.7rem;
-  opacity: 0.5;
-}
-
-/* ── Player card ─────────────────────────────────────────────────── */
-.demo-player {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  padding: 0;
-}
-
-/* Scan-line CRT effect */
-.scan-lines {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0, 0, 0, 0.08) 3px,
-    rgba(0, 0, 0, 0.08) 4px
-  );
-  z-index: 3;
-}
-
-/* Corner bracket decorations */
-.corner {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-color: var(--neon-cyan);
-  border-style: solid;
-  opacity: 0.6;
-  z-index: 4;
-}
-.corner.tl { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
-.corner.tr { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
-.corner.bl { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
-.corner.br { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
-
-/* ── Video ───────────────────────────────────────────────────────── */
-.demo-video-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-}
-
-.demo-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* ── Coming soon placeholder ─────────────────────────────────────── */
-.demo-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: rgba(16, 16, 28, 0.8);
-}
-
-.placeholder-icon {
-  font-size: 2.5rem;
-  opacity: 0.6;
-}
-
-.demo-placeholder p {
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-}
-
-/* ── Info panel ──────────────────────────────────────────────────── */
-.demo-info {
-  padding: 24px 28px 28px;
-}
-
-.demo-header {
-  margin-bottom: 14px;
-}
-
-.demo-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--electric-purple);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.demo-title {
-  color: var(--neon-cyan);
-  font-size: 1.5rem;
-}
-
-.demo-description {
-  color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 20px;
-}
-
-.demo-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
 /* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 560px) {
-  .demo-tabs {
-    gap: 6px;
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 
-  .demo-tab {
-    padding: 8px 12px;
-    font-size: 0.8rem;
+  .project-card {
+    padding: 24px 20px;
   }
 
-  .demo-info {
-    padding: 18px 20px 22px;
-  }
-
-  .demo-title {
-    font-size: 1.2rem;
+  .project-content h3 {
+    font-size: 1.05rem;
   }
 }

@@ -20,6 +20,7 @@ const Navbar = () => {
           <li><a href="#about" className="neon-hover">About</a></li>
           <li><a href="#skills" className="neon-hover">Skills</a></li>
           <li><a href="#projects" className="neon-hover">Projects</a></li>
+          <li><a href="#demos" className="neon-hover">Projects Demo</a></li>
           <li><a href="#contact" className="btn">Contact Me</a></li>
         </ul>
       </div>
