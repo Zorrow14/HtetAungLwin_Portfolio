@@ -94,37 +94,56 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  cursor: pointer;
   background: #000;
 }
 
 .demo-video {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-/* ── Coming soon placeholder ─────────────────────────────────────── */
-.demo-placeholder {
-  width: 100%;
-  height: 100%;
+/* Play / pause overlay */
+.play-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  background: rgba(16, 16, 28, 0.8);
+  background: rgba(10, 10, 15, 0.45);
+  transition: opacity 0.25s ease;
+  z-index: 2;
 }
 
-.placeholder-icon {
-  font-size: 2.5rem;
-  opacity: 0.6;
+.play-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
-.demo-placeholder p {
-  color: var(--text-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
+.play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon-cyan);
+  box-shadow: 0 0 24px rgba(0, 243, 255, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-overlay:hover .play-btn {
+  transform: scale(1.1);
+  box-shadow: 0 0 36px rgba(0, 243, 255, 0.55);
+}
+
+.play-btn svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px; /* optical centre for triangle */
 }
 
 /* ── Info panel ──────────────────────────────────────────────────── */
@@ -133,7 +152,11 @@
 }
 
 .demo-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-bottom: 14px;
+  gap: 12px;
 }
 
 .demo-label {
@@ -149,6 +172,29 @@
 .demo-title {
   color: var(--neon-cyan);
   font-size: 1.5rem;
+}
+
+.demo-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
 }
 
 .demo-description {
