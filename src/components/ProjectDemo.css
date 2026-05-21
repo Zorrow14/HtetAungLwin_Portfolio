@@ -152,6 +152,30 @@
   margin-left: 4px; /* optical centre for triangle */
 }
 
+/* ── Coming soon placeholder ─────────────────────────────────────── */
+.demo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(16, 16, 28, 0.8);
+}
+
+.placeholder-icon {
+  font-size: 2.5rem;
+  opacity: 0.6;
+}
+
+.demo-placeholder p {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
 /* ── Info panel ──────────────────────────────────────────────────── */
 .demo-info {
   padding: 24px 28px 28px;
