@@ -99,6 +99,78 @@
   }
 }
 
+/* ── Hamburger button ────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--neon-cyan);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate to X when open */
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile dropdown ─────────────────────────────────────────────── */
+.mobile-links {
+  display: none;
+  list-style: none;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 5%;
+}
+
+.mobile-links.open {
+  max-height: 400px;
+  padding: 16px 5% 24px;
+}
+
+.mobile-links li a {
+  display: block;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--glass-border);
+  transition: color 0.3s ease;
+}
+
+.mobile-links li:last-child a {
+  border-bottom: none;
+  margin-top: 8px;
+}
+
+.mobile-links li a:hover {
+  color: var(--neon-cyan);
+}
+
+.mobile-links .btn {
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .navbar {
     padding: 20px 5%;
@@ -106,14 +178,16 @@
   .navbar.scrolled {
     padding: 12px 5%;
   }
-  .nav-links {
-    gap: 15px;
-  }
-  .nav-links a {
-    font-size: 0.95rem;
-  }
   .logo {
     font-size: 1.6rem;
   }
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .mobile-links {
+    display: flex;
+  }
 }
-
