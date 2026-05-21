@@ -4,7 +4,7 @@ import './Skills.css';
 const Skills = () => {
   const skillCategories = [
     { title: "Languages", skills: ["JavaScript", "Python", "Java", "HTML/CSS"] },
-    { title: "Frameworks", skills: ["React", "Next.js", "Express.js", "Node.js"] },
+    { title: "Frameworks & Backend Services", skills: ["React", "Next.js", "Express.js", "Node.js", "Supabase"] },
     { title: "Databases", skills: ["MySQL", "PostgreSQL", "MongoDB"] },
     { title: "Tools", skills: ["Git", "GitHub", "Vercel", "Figma"] }
   ];
