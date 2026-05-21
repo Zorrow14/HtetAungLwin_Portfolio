@@ -61,6 +61,7 @@ const ProjectDemo = () => {
       </div>
 
       {/* ── Player card ── */}
+      <div className="demo-player-wrap">
       <div className="demo-player glass-panel neon-hover">
         {/* Scan-line overlay */}
         <div className="scan-lines" aria-hidden="true" />
@@ -106,6 +107,7 @@ const ProjectDemo = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
