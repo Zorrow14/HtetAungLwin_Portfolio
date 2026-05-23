@@ -6,6 +6,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ProjectDemo from './components/ProjectDemo';
+import StarBackground from './components/StarBackground'; // <-- IMPORT NEW COMPONENT
 
 function App() {
   useEffect(() => {
@@ -13,7 +14,7 @@ function App() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target); // Stop tracking once animated
+          observer.unobserve(entry.target); 
         }
       });
     }, { threshold: 0.1 });
@@ -28,7 +29,12 @@ function App() {
 
   return (
     <>
+      {/* Background Gradients */}
       <div className="bg-animation"></div>
+      
+      {/* Interactive Cursor Stars */}
+      <StarBackground /> 
+      
       <Navbar />
       <main>
         <Hero />

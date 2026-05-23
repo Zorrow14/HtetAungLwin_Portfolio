@@ -363,3 +363,16 @@
   }
 }
 
+/* ── Typewriter Cursor Animation ── */
+.typewriter-cursor {
+  display: inline-block;
+  color: var(--neon-cyan);
+  font-weight: 400;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

@@ -1,44 +1,156 @@
 .skills-section {
-  padding-top: 100px;
+  padding-top: 120px;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
+/* ── Circuit Layout (No Cards) ── */
+.skills-circuit {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  padding-left: 10px;
 }
 
-.skill-category {
-  padding: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.circuit-branch {
+  display: flex;
+  gap: 35px;
+  position: relative;
 }
 
-.skill-category h3 {
+/* ── Vertical Glowing Line & Nodes ── */
+.branch-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.branch-node {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  border: 3px solid var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan);
+  z-index: 2;
+  margin-top: 6px; 
+}
+
+.branch-line {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--neon-cyan), rgba(0, 212, 255, 0.1) 80%);
+  min-height: 80px; 
+}
+
+/* Hide the tailing line on the very last item */
+.circuit-branch:last-child .branch-line {
+  display: none;
+}
+
+/* ── Content & Typography ── */
+.branch-content {
+  flex: 1;
+  padding-bottom: 60px; /* Space before the next category starts */
+}
+
+.branch-title {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
   color: var(--text-primary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
 }
 
-.skill-tags {
+.branch-skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 16px;
 }
 
-.skill-tag {
-  background: rgba(0, 243, 255, 0.1);
-  color: var(--neon-cyan);
-  padding: 8px 15px;
-  border-radius: 20px;
+/* ── Fancy Interactive Holographic Pills ── */
+.skill-pill {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
-  border: 1px solid rgba(0, 243, 255, 0.3);
-  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.skill-tag:hover {
-  background: var(--neon-cyan);
-  color: var(--bg-color);
-  box-shadow: 0 0 10px var(--neon-cyan);
+/* The light-sweep animation overlay */
+.skill-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.15), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.skill-pill:hover {
+  border-color: var(--neon-cyan);
+  color: var(--text-primary);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.15), inset 0 0 10px rgba(0, 212, 255, 0.05);
+}
+
+.skill-pill:hover::before {
+  left: 100%;
+}
+
+/* Keep text and icon above the light sweep */
+.skill-name, .skill-icon {
+  z-index: 2;
+  position: relative;
+}
+
+.skill-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.skill-pill:hover .skill-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+/* ── Responsive Adjustments ── */
+@media (max-width: 600px) {
+  .circuit-branch {
+    gap: 20px;
+  }
+
+  .branch-node {
+    width: 14px;
+    height: 14px;
+    margin-top: 8px;
+  }
+
+  .branch-title {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+
+  .skill-pill {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+  
+  .skill-icon {
+    width: 18px;
+    height: 18px;
+  }
 }
