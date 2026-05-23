@@ -83,8 +83,18 @@
 }
 
 .nav-links .btn {
-  padding: 8px 20px;
-  font-size: 0.95rem;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+}
+
+/* Suppress the underline sweep on the button */
+.nav-links .btn::after {
+  display: none;
+}
+
+/* Keep the hover colour consistent with .btn base */
+.nav-links .btn:hover {
+  color: var(--neon-cyan);
 }
 
 /* Entrance Animations */
@@ -168,6 +178,7 @@
   display: inline-block;
   padding: 10px 24px;
   font-size: 0.95rem;
+  border-bottom: none !important;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────── */

@@ -21,7 +21,7 @@ const About = () => {
         {/* Existing Text Column */}
         <div className="about-text">
           <p>
-            I am a final-semester Software Engineering student at Asia Pacific University in Kuala Lumpur, 
+            I’m a final-semester Diploma in Software Engineering student at Asia Pacific University in Kuala Lumpur, 
             with a strong focus on Full Stack Development. My journey in technology is driven by a desire 
             to build functional, clean, and highly responsive web applications that solve real problems across 
             various industries.
@@ -32,13 +32,6 @@ const About = () => {
             frontend frameworks like React. This philosophy ensures that the applications I build are 
             supported by robust, scalable architectures rather than relying purely on surface-level aesthetics. 
             My primary ecosystem revolves around React, JavaScript, Node.js, Express.js, and MongoDB.
-          </p>
-          <p>
-            Beyond writing code, I am deeply invested in the developer community. From organizing collaborative 
-            events like the DEVMatch Hackathon to structuring learning paths to mentor junior students, I enjoy 
-            sharing knowledge and breaking down complex technical concepts. I am constantly pushing my own 
-            boundaries, whether that involves preparing for open-source contributions, experimenting with early 
-            releases like React 19, or refining AI workflows in a professional environment.
           </p>
           <p>
             As I approach the conclusion of my diploma, I am actively seeking an internship opportunity as a React 

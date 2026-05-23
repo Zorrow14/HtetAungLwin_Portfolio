@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,8 +7,11 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ProjectDemo from './components/ProjectDemo';
 import StarBackground from './components/StarBackground'; // <-- IMPORT NEW COMPONENT
+import BootScreen from './components/BootScreen';
 
 function App() {
+  const [booted, setBooted] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -29,6 +32,8 @@ function App() {
 
   return (
     <>
+      {!booted && <BootScreen onDone={() => setBooted(true)} />}
+
       {/* Background Gradients */}
       <div className="bg-animation"></div>
       

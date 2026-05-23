@@ -26,7 +26,7 @@ const Navbar = () => {
           <li><a href="#skills" className="neon-hover">Skills</a></li>
           <li><a href="#projects" className="neon-hover">Projects</a></li>
           <li><a href="#demos" className="neon-hover">Projects Demo</a></li>
-          <li><a href="#contact" className="btn">Contact Me</a></li>
+          <li><a href="#contact" className="neon-hover">Contact Me</a></li>
         </ul>
 
         {/* Hamburger button (mobile only) */}
@@ -45,7 +45,7 @@ const Navbar = () => {
         <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
         <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
         <li><a href="#demos" onClick={closeMenu}>Projects Demo</a></li>
-        <li><a href="#contact" className="btn" onClick={closeMenu}>Contact Me</a></li>
+        <li><a href="#contact" onClick={closeMenu}>Contact Me</a></li>
       </ul>
     </nav>
   );

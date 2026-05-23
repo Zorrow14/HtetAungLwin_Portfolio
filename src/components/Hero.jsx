@@ -59,7 +59,7 @@ const Hero = () => {
           </h2>
           
           <p className="description delay-3">
-            I'm a final-semester Software Engineering student at Asia Pacific University and an aspiring Full Stack Developer. 
+            I’m a final-semester Diploma in Software Engineering student at Asia Pacific University and an aspiring Full Stack Developer. 
             I specialize in crafting seamless front-end designs and building highly functional, responsive web applications 
             across diverse industries using React, Node.js, and modern web technologies.
           </p>
