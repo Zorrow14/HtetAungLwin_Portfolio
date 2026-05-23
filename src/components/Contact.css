@@ -283,3 +283,19 @@ footer {
   opacity: 0.7;
   margin-top: 1px;
 }
+
+/* SVG icon sizing inside contact circle */
+.contact-icon--svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon--svg svg {
+  color: var(--neon-cyan);
+  transition: color 0.3s ease;
+}
+
+.contact-info-item:hover .contact-icon--svg svg {
+  color: var(--neon-cyan);
+}
