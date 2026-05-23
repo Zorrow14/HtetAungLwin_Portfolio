@@ -210,3 +210,76 @@ footer {
   font-family: var(--font-mono);
   font-size: 0.9rem;
 }
+/* ── Chatbot nudge banner ── */
+.contact-chatbot-nudge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+
+.nudge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+  flex-shrink: 0;
+  animation: blink-nudge 2s ease-in-out infinite;
+}
+
+@keyframes blink-nudge {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.contact-chatbot-nudge p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-chatbot-nudge strong {
+  color: var(--text-primary);
+}
+
+.nudge-chatbot-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-main);
+  font-size: inherit;
+  color: var(--neon-cyan);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.nudge-chatbot-link:hover {
+  opacity: 0.75;
+}
+
+/* ── Phone entry ── */
+.contact-info-phone {
+  cursor: default;
+}
+
+.contact-info-phone:hover .contact-info-value {
+  color: var(--text-primary);
+}
+
+.contact-info-sublabel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--electric-purple);
+  opacity: 0.7;
+  margin-top: 1px;
+}

@@ -24,6 +24,13 @@ const Contact = () => {
       href: 'mailto:htetaunglwin223@gmail.com',
     },
     {
+      icon: '☎',
+      label: 'PHONE',
+      value: '+60 17 667 9531',
+      href: 'tel:+60',
+      isPhone: true,
+    },
+    {
       icon: 'gh',
       label: 'GITHUB',
       value: 'github.com/Zorrow14',
@@ -54,17 +61,33 @@ const Contact = () => {
         quiet coffee.
       </p>
 
+      {/* AI Chatbot nudge banner */}
+      <div className="contact-chatbot-nudge animate-on-scroll reveal-up delay-1">
+        <span className="nudge-dot" />
+        <p>
+          Want a <strong>fast reply?</strong> Ask my{' '}
+          <button
+            className="nudge-chatbot-link"
+            onClick={() => document.querySelector('.chatbot-fab')?.click()}
+          >
+            AI assistant
+          </button>{' '}
+          — it knows my skills, projects, and availability instantly.
+        </p>
+      </div>
+
       <div className="contact-grid animate-on-scroll reveal-scale delay-1">
         {/* Left: Contact Info */}
         <div className="contact-info-panel">
           {contactInfo.map((item) => (
             <a
               key={item.label}
-              href={item.href}
-              target={item.href.startsWith('mailto') ? undefined : '_blank'}
+              href={item.isPhone ? undefined : item.href}
+              target={item.href.startsWith('mailto') || item.isPhone ? undefined : '_blank'}
               rel="noreferrer"
-              className={`contact-info-item ${item.isCV ? 'contact-info-cv' : ''}`}
+              className={`contact-info-item ${item.isCV ? 'contact-info-cv' : ''} ${item.isPhone ? 'contact-info-phone' : ''}`}
               download={item.isCV ? true : undefined}
+              onClick={item.isPhone ? (e) => e.preventDefault() : undefined}
             >
               <div className="contact-icon-wrap">
                 <span className="contact-icon">{item.icon}</span>
@@ -99,7 +122,7 @@ const Contact = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="you@institution.edu"
+                placeholder="you@email.com"
                 className="form-input"
                 required
               />

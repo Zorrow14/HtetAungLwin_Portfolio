@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import ProjectDemo from './components/ProjectDemo';
 import StarBackground from './components/StarBackground'; // <-- IMPORT NEW COMPONENT
 import BootScreen from './components/BootScreen';
+import ChatBot from './components/ChatBot';
 
 function App() {
   const [booted, setBooted] = useState(false);
@@ -49,6 +50,7 @@ function App() {
         <ProjectDemo />
         <Contact />
       </main>
+      <ChatBot />
     </>
   )
 }
