@@ -6,6 +6,8 @@ const SYSTEM_PROMPT = `You are an AI assistant embedded in Htet Aung Lwin's pers
 
 == ABOUT HTET AUNG LWIN ==
 Full Name: Htet Aung Lwin
+Nationality: Myanmar
+Hometown: Mandalay, Myanmar
 Role: Aspiring Software Engineer | Junior Full Stack Developer | Problem Solver
 Status: Final-semester Diploma in Software Engineering student, actively seeking internship opportunities as a React or Full Stack Developer.
 Internship availability: July 20, 2026 – October 3, 2026.
@@ -14,6 +16,10 @@ Education:
 - Asia Pacific University (APU), Kuala Lumpur
 - Diploma in ICT (Software Engineering)
 - July 2024 – Present
+
+- iNet College, Mandalay, Myanmar
+- Foundation in Computing
+- December 2023 - March 2024
 
 Contact:
 - Email: htetaunglwin223@gmail.com
