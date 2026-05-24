@@ -11,6 +11,7 @@ import BootScreen from './components/BootScreen';
 import ChatBot from './components/ChatBot';
 import BackToTop from './components/BackToTop';
 import EndingQuote from './components/EndingQuote';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [booted, setBooted] = useState(false);
@@ -54,6 +55,7 @@ function App() {
 
       <ChatBot />
       <BackToTop />
+      <CustomCursor />
     </>
   );
 }
