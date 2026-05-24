@@ -9,6 +9,8 @@ import ProjectDemo from './components/ProjectDemo';
 import StarBackground from './components/StarBackground'; // <-- IMPORT NEW COMPONENT
 import BootScreen from './components/BootScreen';
 import ChatBot from './components/ChatBot';
+import BackToTop from './components/BackToTop';
+import EndingQuote from './components/EndingQuote';
 
 function App() {
   const [booted, setBooted] = useState(false);
@@ -50,7 +52,9 @@ function App() {
         <ProjectDemo />
         <Contact />
       </main>
+      <EndingQuote />
       <ChatBot />
+      <BackToTop />
     </>
   )
 }

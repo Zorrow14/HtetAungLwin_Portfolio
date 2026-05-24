@@ -1,0 +1,123 @@
+.ending-quote-section {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 110px 0 14px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ending-quote-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 420px;
+  height: 110px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.07),
+    rgba(168, 85, 247, 0.045),
+    transparent 68%
+  );
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.ending-quote-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.ending-quote-text {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 4vw, 3.2rem);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.ending-quote-text span {
+  display: inline-block;
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95),
+    var(--neon-cyan),
+    var(--electric-purple)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 24px rgba(0, 212, 255, 0.08);
+}
+
+.ending-quote-divider {
+  width: 220px;
+  height: 1px;
+  margin: 26px auto 14px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.75),
+    rgba(168, 85, 247, 0.65),
+    transparent
+  );
+}
+
+.ending-quote-copyright {
+  margin: 0;
+  padding-bottom: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.52);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+  .ending-quote-section {
+    padding: 80px 0 12px !important;
+  }
+
+  .ending-quote-text {
+    font-size: clamp(1.55rem, 6vw, 2.6rem);
+    line-height: 1.28;
+  }
+
+  .ending-quote-divider {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ending-quote-section {
+    padding: 70px 0 10px !important;
+  }
+
+  .ending-quote-container {
+    padding: 0 18px;
+  }
+
+  .ending-quote-text {
+    font-size: clamp(1.45rem, 8vw, 2.15rem);
+    line-height: 1.32;
+  }
+
+  .ending-quote-divider {
+    width: 150px;
+    margin-top: 22px;
+    margin-bottom: 12px;
+  }
+
+  .ending-quote-copyright {
+    font-size: 0.68rem;
+  }
+}
