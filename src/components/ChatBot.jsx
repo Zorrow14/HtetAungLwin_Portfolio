@@ -72,36 +72,54 @@ Htet is actively seeking a Software Development internship, particularly as a Re
 == INSTRUCTIONS ==
 - Answer naturally and conversationally. Keep responses concise (2-4 sentences unless detail is requested).
 - If asked about hiring/internship, highlight his availability and eagerness, and direct the visitor to his email or LinkedIn.
+- If a recruiter provides a job description, analyze the match against Htet's capabilities using this structure: Overall fit, strongest matches, possible gaps, and recommended next step. Be honest and do not claim skills that are not listed.
 - If asked something you genuinely don't know (e.g. Htet's salary expectations, personal hobbies beyond coding), say you don't have that information and suggest they reach out directly.
 - Do not make up information not listed above.
 - Never say "as an AI language model". Just be helpful and direct.`;
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('chat');
+
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Hey there! I'm Htet's AI assistant. Ask me anything about his skills, projects, or internship availability. 🚀",
+      content:
+        "Hi! I can answer questions about Htet's skills, projects, and internship availability. For recruiter job matching, open the JD Match tab. 🚀",
     },
   ]);
+
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const [jobDescription, setJobDescription] = useState('');
+  const [jobAnalysis, setJobAnalysis] = useState('');
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const jdRef = useRef(null);
 
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) return;
+
+    if (activeTab === 'chat') {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
       inputRef.current?.focus();
     }
-  }, [messages, isOpen]);
 
-  const sendMessage = async () => {
-    const trimmed = input.trim();
+    if (activeTab === 'match') {
+      jdRef.current?.focus();
+    }
+  }, [messages, isOpen, activeTab]);
+
+  const sendMessage = async (messageOverride) => {
+    const trimmed = (messageOverride ?? input).trim();
     if (!trimmed || isLoading) return;
 
     const userMessage = { role: 'user', content: trimmed };
     const updatedMessages = [...messages, userMessage];
+
     setMessages(updatedMessages);
     setInput('');
     setIsLoading(true);
@@ -118,22 +136,81 @@ export default function ChatBot() {
       if (!response.ok) throw new Error('API error');
 
       const data = await response.json();
-      const assistantMessage = {
-        role: 'assistant',
-        content: data.content,
-      };
-      setMessages((prev) => [...prev, assistantMessage]);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: data.content,
+        },
+      ]);
     } catch {
       setMessages((prev) => [
         ...prev,
         {
           role: 'assistant',
-          content: "Sorry, I'm having trouble connecting right now. Please try again shortly!",
+          content:
+            "Sorry, I'm having trouble connecting right now. Please try again shortly!",
         },
       ]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const analyzeJobMatch = async () => {
+    const trimmedJD = jobDescription.trim();
+    if (!trimmedJD || isAnalyzing) return;
+
+    setIsAnalyzing(true);
+    setJobAnalysis('');
+
+    const analysisPrompt = `
+A recruiter has provided this Job Description:
+
+${trimmedJD}
+
+Please analyze whether this role matches Htet Aung Lwin's current capabilities.
+
+Use this exact structure:
+1. Overall Fit
+2. Strongest Matches
+3. Possible Gaps
+4. Recommended Next Step
+
+Be honest, concise, and recruiter-friendly. Do not claim skills or experience that are not listed in Htet's profile.
+`;
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            {
+              role: 'user',
+              content: analysisPrompt,
+            },
+          ],
+        }),
+      });
+
+      if (!response.ok) throw new Error('API error');
+
+      const data = await response.json();
+      setJobAnalysis(data.content);
+    } catch {
+      setJobAnalysis(
+        "Sorry, I couldn't analyze the job description right now. Please try again shortly."
+      );
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
+  const clearJobMatch = () => {
+    setJobDescription('');
+    setJobAnalysis('');
   };
 
   const handleKeyDown = (e) => {
@@ -147,7 +224,13 @@ export default function ChatBot() {
     "What projects has Htet built?",
     "Is Htet available for internship?",
     "What are his main skills?",
+    "How can I contact Htet?",
   ];
+
+  const handleSuggestionClick = (question) => {
+    if (isLoading) return;
+    sendMessage(question);
+  };
 
   return (
     <>
@@ -158,19 +241,42 @@ export default function ChatBot() {
         aria-label="Toggle AI Chat"
       >
         {isOpen ? (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         ) : (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-            {/* 4-pointed sparkle star */}
-            <path d="M12 2 C12 2 13.2 7.5 14.5 9.5 C16 11.8 22 12 22 12 C22 12 16 12.2 14.5 14.5 C13.2 16.5 12 22 12 22 C12 22 10.8 16.5 9.5 14.5 C8 12.2 2 12 2 12 C2 12 8 11.8 9.5 9.5 C10.8 7.5 12 2 12 2 Z" fill="currentColor" stroke="none" opacity="0.9" />
-            {/* Small accent dots */}
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path
+              d="M12 2 C12 2 13.2 7.5 14.5 9.5 C16 11.8 22 12 22 12 C22 12 16 12.2 14.5 14.5 C13.2 16.5 12 22 12 22 C12 22 10.8 16.5 9.5 14.5 C8 12.2 2 12 2 12 C2 12 8 11.8 9.5 9.5 C10.8 7.5 12 2 12 2 Z"
+              fill="currentColor"
+              stroke="none"
+              opacity="0.9"
+            />
             <circle cx="4.5" cy="4.5" r="1.1" fill="currentColor" opacity="0.6" />
             <circle cx="19.5" cy="4.5" r="0.8" fill="currentColor" opacity="0.45" />
             <circle cx="19.5" cy="19.5" r="1.1" fill="currentColor" opacity="0.6" />
           </svg>
         )}
+
         {!isOpen && <span className="chatbot-fab__pulse" />}
       </button>
 
@@ -182,61 +288,160 @@ export default function ChatBot() {
             <span className="status-dot" />
             <span className="chatbot-header__name">Htet's AI Assistant</span>
           </div>
-          <span className="chatbot-header__model">groq / llama-3</span>
+
+          <span className="chatbot-header__badge">Career Assistant</span>
         </div>
 
-        {/* Messages */}
-        <div className="chatbot-messages">
-          {messages.map((msg, idx) => (
-            <div key={idx} className={`chatbot-msg chatbot-msg--${msg.role}`}>
-              {msg.role === 'assistant' && (
-                <div className="chatbot-msg__avatar">AI</div>
-              )}
-              <div className="chatbot-msg__bubble">{msg.content}</div>
-            </div>
-          ))}
+        {/* Tabs */}
+        <div className="chatbot-tabs">
+          <button
+            className={`chatbot-tab ${activeTab === 'chat' ? 'chatbot-tab--active' : ''}`}
+            onClick={() => setActiveTab('chat')}
+          >
+            Chat
+          </button>
 
-          {isLoading && (
-            <div className="chatbot-msg chatbot-msg--assistant">
-              <div className="chatbot-msg__avatar">AI</div>
-              <div className="chatbot-msg__bubble chatbot-msg__bubble--typing">
-                <span /><span /><span />
-              </div>
-            </div>
-          )}
-
-          {/* Suggested questions shown only on first message */}
-          {messages.length === 1 && !isLoading && (
-            <div className="chatbot-suggestions">
-              {suggestedQuestions.map((q, i) => (
-                <button key={i} className="chatbot-suggestion-pill" onClick={() => { setInput(q); inputRef.current?.focus(); }}>
-                  {q}
-                </button>
-              ))}
-            </div>
-          )}
-
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* Input */}
-        <div className="chatbot-input-row">
-          <input
-            ref={inputRef}
-            className="chatbot-input"
-            type="text"
-            placeholder="Ask me anything..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            disabled={isLoading}
-          />
-          <button className="chatbot-send-btn" onClick={sendMessage} disabled={isLoading || !input.trim()} aria-label="Send">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
+          <button
+            className={`chatbot-tab ${activeTab === 'match' ? 'chatbot-tab--active' : ''}`}
+            onClick={() => setActiveTab('match')}
+          >
+            JD Match
           </button>
         </div>
+
+        {/* Chat Tab */}
+        {activeTab === 'chat' && (
+          <>
+            <div className="chatbot-messages">
+              {messages.map((msg, idx) => (
+                <div key={idx} className={`chatbot-msg chatbot-msg--${msg.role}`}>
+                  {msg.role === 'assistant' && <div className="chatbot-msg__avatar">AI</div>}
+
+                  <div className="chatbot-msg__bubble">{msg.content}</div>
+                </div>
+              ))}
+
+              {isLoading && (
+                <div className="chatbot-msg chatbot-msg--assistant">
+                  <div className="chatbot-msg__avatar">AI</div>
+                  <div className="chatbot-msg__bubble chatbot-msg__bubble--typing">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </div>
+              )}
+
+              {messages.length === 1 && !isLoading && (
+                <div className="chatbot-suggestions">
+                  {suggestedQuestions.map((q, i) => (
+                    <button
+                      key={i}
+                      className="chatbot-suggestion-pill"
+                      onClick={() => handleSuggestionClick(q)}
+                      disabled={isLoading}
+                    >
+                      {q}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </div>
+
+            <div className="chatbot-input-row">
+              <input
+                ref={inputRef}
+                className="chatbot-input"
+                type="text"
+                placeholder="Ask about Htet..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                disabled={isLoading}
+              />
+
+              <button
+                className="chatbot-send-btn"
+                onClick={() => sendMessage()}
+                disabled={isLoading || !input.trim()}
+                aria-label="Send"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* JD Match Tab */}
+        {activeTab === 'match' && (
+          <div className="chatbot-match-panel">
+            <div className="chatbot-match-intro">
+              <span className="chatbot-match-intro__label">Recruiter tool</span>
+              <h4>Job Description Match</h4>
+              <p>
+                Paste a recruiter&apos;s job description below. The assistant will compare it
+                against Htet&apos;s skills, projects, and internship availability.
+              </p>
+            </div>
+
+            <textarea
+              ref={jdRef}
+              className="chatbot-jd-textarea"
+              placeholder="Paste the job description here..."
+              value={jobDescription}
+              onChange={(e) => setJobDescription(e.target.value)}
+              disabled={isAnalyzing}
+            />
+
+            <div className="chatbot-match-actions">
+              <button
+                className="chatbot-analyze-btn"
+                onClick={analyzeJobMatch}
+                disabled={isAnalyzing || !jobDescription.trim()}
+              >
+                {isAnalyzing ? 'Analyzing...' : 'Analyze Match'}
+              </button>
+
+              <button
+                className="chatbot-clear-btn"
+                onClick={clearJobMatch}
+                disabled={isAnalyzing || (!jobDescription && !jobAnalysis)}
+              >
+                Clear
+              </button>
+            </div>
+
+            {isAnalyzing && (
+              <div className="chatbot-analysis-loading">
+                <span />
+                <span />
+                <span />
+                <p>Checking the match...</p>
+              </div>
+            )}
+
+            {jobAnalysis && !isAnalyzing && (
+              <div className="chatbot-analysis-result">
+                <span className="chatbot-analysis-result__label">Analysis result</span>
+                <div className="chatbot-analysis-result__content">{jobAnalysis}</div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

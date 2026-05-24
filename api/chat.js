@@ -73,22 +73,25 @@ Htet is actively seeking a Software Development internship, particularly as a Re
 == INSTRUCTIONS ==
 - Answer naturally and conversationally. Keep responses concise (2-4 sentences unless detail is requested).
 - If asked about hiring/internship, highlight his availability and eagerness, and direct the visitor to his email or LinkedIn.
+- If a recruiter provides a job description, analyze the match against Htet's capabilities using this structure: Overall fit, strongest matches, possible gaps, and recommended next step. Be honest and do not claim skills that are not listed.
 - If asked something you genuinely don't know (e.g. Htet's salary expectations, personal hobbies beyond coding), say you don't have that information and suggest they reach out directly.
 - Do not make up information not listed above.
 - Never say "as an AI language model". Just be helpful and direct.`;
 
 export default async function handler(req, res) {
-  // Only allow POST
+  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const apiKey = process.env.My_Groq_Portfolio_Chat;
+
   if (!apiKey) {
     return res.status(500).json({ error: 'API key not configured' });
   }
 
   const { messages } = req.body;
+
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'Invalid request body' });
   }
@@ -114,7 +117,11 @@ export default async function handler(req, res) {
     if (!groqResponse.ok) {
       const errorData = await groqResponse.json();
       console.error('Groq API error:', errorData);
-      return res.status(groqResponse.status).json({ error: 'Groq API error', details: errorData });
+
+      return res.status(groqResponse.status).json({
+        error: 'Groq API error',
+        details: errorData,
+      });
     }
 
     const data = await groqResponse.json();
@@ -123,6 +130,9 @@ export default async function handler(req, res) {
     return res.status(200).json({ content });
   } catch (error) {
     console.error('Server error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+
+    return res.status(500).json({
+      error: 'Internal server error',
+    });
   }
 }
