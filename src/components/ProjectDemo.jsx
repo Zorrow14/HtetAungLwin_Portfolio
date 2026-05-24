@@ -23,7 +23,7 @@ const ProjectDemo = () => {
       websiteUrl: null,
       description: "Preview the strict MVVM architecture and native Android hardware integrations.",
       tech: ["Flutter", "Supabase", "Dart"],
-      actionLink: "YOUR_GOOGLE_DRIVE_APK_LINK_HERE", // <-- PUT YOUR GOOGLE DRIVE LINK HERE
+      actionLink: "https://drive.google.com/file/d/1E50Fhlve2BRHRDJg31YR2uwuzjz6tqAp/view?usp=drive_link", // <-- PUT YOUR GOOGLE DRIVE LINK HERE
       actionText: "DOWNLOAD APK ↓\uFE0E"
     },
     {
