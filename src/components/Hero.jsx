@@ -59,9 +59,9 @@ const Hero = () => {
           </h2>
           
           <p className="description delay-3">
-            I’m a final-semester Diploma in Software Engineering student at Asia Pacific University and an aspiring Full Stack Developer. 
-            I specialize in crafting seamless front-end designs and building highly functional, responsive web applications 
-            across diverse industries using React, Node.js, and modern web technologies.
+            Final-semester Software Engineering student focused on React, Node.js,
+            and full-stack web development. I build clean, responsive applications
+            with strong backend foundations and practical user-focused design.
           </p>
           <div className="cta-buttons delay-3">
             <a href="#projects" className="btn btn-primary">View Projects</a>

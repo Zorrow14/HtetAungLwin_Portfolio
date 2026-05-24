@@ -2,216 +2,171 @@
   padding-top: 120px;
 }
 
+.projects-intro {
+  max-width: 760px;
+  margin: 18px 0 48px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
 .projects-showcase {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  margin-top: 50px;
+  gap: 28px;
 }
 
-/* ── Holographic Datapad ── */
-.project-datapad {
-  display: flex;
+.project-case-card {
+  display: block;
   text-decoration: none;
   color: inherit;
   border-radius: 20px;
+  padding: 30px;
+  position: relative;
   overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  min-height: 220px;
-  background: linear-gradient(135deg, rgba(20, 20, 35, 0.6) 0%, rgba(10, 10, 20, 0.8) 100%);
-  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.72);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
-/* Alternating border glow colors based on position */
-.project-datapad:nth-child(odd) {
-  border-left: 4px solid var(--neon-cyan);
-}
-.project-datapad:nth-child(even) {
-  border-right: 4px solid var(--electric-purple);
-  flex-direction: row-reverse;
-}
-
-/* Hover Effects */
-.project-datapad:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.project-datapad:nth-child(odd):hover { border-left-color: var(--neon-cyan); }
-.project-datapad:nth-child(even):hover { border-right-color: var(--electric-purple); }
-
-/* ── Scanning Line Effect ── */
-.scan-effect {
+.project-case-card::before {
+  content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.7s ease;
-  z-index: 1;
-  pointer-events: none;
+  inset: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--neon-cyan), var(--electric-purple));
+  opacity: 0.85;
 }
 
-.project-datapad:hover .scan-effect {
-  left: 150%;
+.project-case-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.24);
+  background: rgba(15, 23, 42, 0.88);
 }
 
-/* ── Datapad Header (Title & Tech) ── */
-.datapad-header {
-  flex: 1;
-  padding: 35px;
+.project-case-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 2;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 24px;
 }
 
 .project-index {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  opacity: 0.5;
+  display: block;
   margin-bottom: 8px;
-  letter-spacing: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.12em;
 }
 
-.datapad-header h3 {
+.project-tag {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0, 212, 255, 0.07);
+  border: 1px solid rgba(0, 212, 255, 0.16);
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-case-header h3 {
+  margin: 0;
   font-family: var(--font-mono);
   font-size: 1.8rem;
   color: var(--text-primary);
-  margin-bottom: 20px;
-  line-height: 1.2;
-  transition: color 0.3s ease;
+  text-align: right;
 }
 
-.project-datapad:hover .datapad-header h3 {
+.project-case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.project-case-block {
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.project-case-block span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--neon-cyan);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.project-datapad:nth-child(even):hover .datapad-header h3 {
-  color: var(--electric-purple);
+.project-case-block p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.project-case-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .datapad-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 9px;
 }
 
 .tech-pill {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  font-size: 0.72rem;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
   color: var(--text-secondary);
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
 }
 
-.project-datapad:hover .tech-pill {
-  border-color: rgba(0, 212, 255, 0.3);
+.project-view-link {
+  white-space: nowrap;
   color: var(--neon-cyan);
-  background: rgba(0, 212, 255, 0.05);
-}
-
-/* ── Datapad Body (Bullets) ── */
-.datapad-body {
-  flex: 1.5;
-  padding: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-}
-
-.datapad-bullets {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.datapad-bullets li {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  position: relative;
-  padding-left: 20px;
-}
-
-.datapad-bullets li::before {
-  content: "»";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--neon-cyan);
-  font-size: 1.2rem;
-  line-height: 1.4;
-}
-
-.project-datapad:nth-child(even) .datapad-bullets li::before {
-  color: var(--electric-purple);
-}
-
-/* ── Futuristic Status Indicator ── */
-.datapad-status {
-  margin-top: 25px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  opacity: 0.6;
-  letter-spacing: 1px;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
-.status-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #10b981; /* Success green */
-  border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; }
-  100% { opacity: 0.5; }
-}
-
-/* ── Responsive ── */
 @media (max-width: 900px) {
-  .project-datapad,
-  .project-datapad:nth-child(even) {
+  .project-case-header {
     flex-direction: column;
-    border-right: none;
-    border-left: 4px solid var(--neon-cyan); /* Reset to standard border on mobile */
-  }
-  
-  .project-datapad:nth-child(even):hover {
-    border-left-color: var(--electric-purple);
   }
 
-  .datapad-header,
-  .datapad-body {
-    padding: 25px;
+  .project-case-header h3 {
+    text-align: left;
   }
-  
-  .datapad-header h3 {
-    font-size: 1.5rem;
+
+  .project-case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-case-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-case-card {
+    padding: 24px;
   }
 }
