@@ -5,6 +5,8 @@ const SYSTEM_PROMPT = `You are an AI assistant embedded in Htet Aung Lwin's pers
 
 == ABOUT HTET AUNG LWIN ==
 Full Name: Htet Aung Lwin
+Nationality: Myanmar
+Hometown: Mandalay, Myanmar
 Role: Aspiring Software Engineer | Junior Full Stack Developer | Problem Solver
 Status: Final-semester Diploma in Software Engineering student, actively seeking internship opportunities as a React or Full Stack Developer.
 Internship availability: July 20, 2026 – October 3, 2026.
@@ -13,6 +15,10 @@ Education:
 - Asia Pacific University (APU), Kuala Lumpur
 - Diploma in ICT (Software Engineering)
 - July 2024 – Present
+
+- Inet College, Mandalay, Myanmar
+- Foundation in Computing
+- December 2023 - March 2024
 
 Contact:
 - Email: htetaunglwin223@gmail.com
@@ -28,7 +34,7 @@ Databases: MySQL, PostgreSQL, MongoDB
 Tools & Deployment: Git, GitHub, Vercel, Vite, Figma, VS Code
 
 == PHILOSOPHY ==
-Htet prioritizes mastering backend fundamentals (Node.js, Express.js) before layering on frontend frameworks like React. He believes solid architecture produces scalable, robust apps rather than relying on surface aesthetics alone. His primary ecosystem: React, JavaScript, Node.js, Express.js, MongoDB.
+Htet prioritizes mastering backend fundamentals such as Node.js and Express.js before layering on frontend frameworks like React. He believes solid architecture produces scalable, robust apps rather than relying on surface aesthetics alone. His primary ecosystem is React, JavaScript, Node.js, Express.js, and MongoDB.
 
 == PROJECTS ==
 1. CineSearch
@@ -39,7 +45,7 @@ Htet prioritizes mastering backend fundamentals (Node.js, Express.js) before lay
    - Live: https://movie-search-engine-ruddy.vercel.app/
 
 2. AuraGains
-   - Native Android full-stack social fitness platform to combat gym anxiety (team project)
+   - Native Android full-stack social fitness platform to combat gym anxiety
    - Custom workout protocol builders and rich media social feed with dynamic privacy logic
    - Flutter + Supabase using strict MVVM architecture
    - Tech: Flutter, Supabase, Dart, Provider
@@ -60,20 +66,21 @@ Htet prioritizes mastering backend fundamentals (Node.js, Express.js) before lay
    - GitHub: https://github.com/Zorrow14/Expense_Management_System_PY
 
 5. Education Management System
-   - Collaborative academic platform — Htet built the Student Portal module
-   - Secure authentication, automated course enrolment, grade-viewing interface
+   - Collaborative academic platform where Htet built the Student Portal module
+   - Secure authentication, automated course enrolment, and grade-viewing interface
    - File-based database integration
    - Tech: Python
    - GitHub: https://github.com/lw112k/Education-Management-System-PY
 
 == INTERNSHIP GOAL ==
-Htet is actively seeking a Software Development internship, particularly as a React or Full Stack Developer, available from July 20, 2026 to October 3, 2026. He is eager to contribute to meaningful projects, refine his engineering practices, and grow alongside a dedicated team.
+Htet is actively seeking a Software Development internship, particularly as a React or Full Stack Developer. He is available from July 20, 2026 to October 3, 2026. He is eager to contribute to meaningful projects, refine his engineering practices, and grow alongside a dedicated team.
 
 == INSTRUCTIONS ==
-- Answer naturally and conversationally. Keep responses concise (2-4 sentences unless detail is requested).
-- If asked about hiring/internship, highlight his availability and eagerness, and direct the visitor to his email or LinkedIn.
-- If a recruiter provides a job description, analyze the match against Htet's capabilities using this structure: Overall fit, strongest matches, possible gaps, and recommended next step. Be honest and do not claim skills that are not listed.
-- If asked something you genuinely don't know (e.g. Htet's salary expectations, personal hobbies beyond coding), say you don't have that information and suggest they reach out directly.
+- Answer naturally and conversationally. Keep responses concise unless detail is requested.
+- If asked about hiring or internship, highlight his availability and eagerness, and direct the visitor to his email or LinkedIn.
+- If a recruiter provides a job description, analyze the match against Htet's capabilities using this structure: Match Level, Best Fit For, Overall Fit, Strongest Matches, Possible Gaps, Suggested Positioning, and Recommended Next Step.
+- Be honest and do not claim skills that are not listed.
+- If asked something you genuinely do not know, say you do not have that information and suggest reaching out directly.
 - Do not make up information not listed above.
 - Never say "as an AI language model". Just be helpful and direct.`;
 
@@ -173,12 +180,27 @@ ${trimmedJD}
 Please analyze whether this role matches Htet Aung Lwin's current capabilities.
 
 Use this exact structure:
-1. Overall Fit
-2. Strongest Matches
-3. Possible Gaps
-4. Recommended Next Step
 
-Be honest, concise, and recruiter-friendly. Do not claim skills or experience that are not listed in Htet's profile.
+Match Level: Strong / Moderate / Weak
+Best Fit For: Frontend / Full Stack / Backend / Mobile / Other
+
+1. Overall Fit
+Briefly explain whether Htet is suitable for this role.
+
+2. Strongest Matches
+List the strongest overlaps between the job description and Htet's skills/projects.
+
+3. Possible Gaps
+List missing or weaker areas honestly. Do not invent experience.
+
+4. Suggested Positioning
+Explain how Htet should position himself when applying.
+
+5. Recommended Next Step
+Give one clear action, such as applying, tailoring CV, building a small demo, or improving a missing skill.
+
+Be honest, concise, recruiter-friendly, and easy to scan.
+Do not claim skills or experience that are not listed in Htet's profile.
 `;
 
     try {
@@ -234,7 +256,6 @@ Be honest, concise, and recruiter-friendly. Do not claim skills or experience th
 
   return (
     <>
-      {/* Floating Button */}
       <button
         className={`chatbot-fab ${isOpen ? 'chatbot-fab--active' : ''}`}
         onClick={() => setIsOpen((prev) => !prev)}
@@ -280,9 +301,7 @@ Be honest, concise, and recruiter-friendly. Do not claim skills or experience th
         {!isOpen && <span className="chatbot-fab__pulse" />}
       </button>
 
-      {/* Chat Window */}
       <div className={`chatbot-window glass-panel ${isOpen ? 'chatbot-window--open' : ''}`}>
-        {/* Header */}
         <div className="chatbot-header">
           <div className="chatbot-header__status">
             <span className="status-dot" />
@@ -292,13 +311,12 @@ Be honest, concise, and recruiter-friendly. Do not claim skills or experience th
           <span className="chatbot-header__badge">Career Assistant</span>
         </div>
 
-        {/* Tabs */}
         <div className="chatbot-tabs">
           <button
             className={`chatbot-tab ${activeTab === 'chat' ? 'chatbot-tab--active' : ''}`}
             onClick={() => setActiveTab('chat')}
           >
-            Chat
+            Ask About Htet
           </button>
 
           <button
@@ -309,13 +327,14 @@ Be honest, concise, and recruiter-friendly. Do not claim skills or experience th
           </button>
         </div>
 
-        {/* Chat Tab */}
         {activeTab === 'chat' && (
           <>
             <div className="chatbot-messages">
               {messages.map((msg, idx) => (
                 <div key={idx} className={`chatbot-msg chatbot-msg--${msg.role}`}>
-                  {msg.role === 'assistant' && <div className="chatbot-msg__avatar">AI</div>}
+                  {msg.role === 'assistant' && (
+                    <div className="chatbot-msg__avatar">AI</div>
+                  )}
 
                   <div className="chatbot-msg__bubble">{msg.content}</div>
                 </div>
@@ -386,16 +405,23 @@ Be honest, concise, and recruiter-friendly. Do not claim skills or experience th
           </>
         )}
 
-        {/* JD Match Tab */}
         {activeTab === 'match' && (
           <div className="chatbot-match-panel">
             <div className="chatbot-match-intro">
               <span className="chatbot-match-intro__label">Recruiter tool</span>
+
               <h4>Job Description Match</h4>
+
               <p>
-                Paste a recruiter&apos;s job description below. The assistant will compare it
-                against Htet&apos;s skills, projects, and internship availability.
+                Paste a recruiter&apos;s job description here. The assistant will return a
+                quick match level, strongest overlaps, possible gaps, and the best next step.
               </p>
+
+              <div className="chatbot-match-summary">
+                <span>Match Level</span>
+                <span>Best Fit Area</span>
+                <span>Skill Gaps</span>
+              </div>
             </div>
 
             <textarea
@@ -436,8 +462,13 @@ Be honest, concise, and recruiter-friendly. Do not claim skills or experience th
 
             {jobAnalysis && !isAnalyzing && (
               <div className="chatbot-analysis-result">
-                <span className="chatbot-analysis-result__label">Analysis result</span>
-                <div className="chatbot-analysis-result__content">{jobAnalysis}</div>
+                <span className="chatbot-analysis-result__label">
+                  Analysis result
+                </span>
+
+                <div className="chatbot-analysis-result__content">
+                  {jobAnalysis}
+                </div>
               </div>
             )}
           </div>

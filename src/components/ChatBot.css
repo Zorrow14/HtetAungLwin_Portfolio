@@ -666,3 +666,35 @@
     padding-left: 0;
   }
 }
+
+.chatbot-match-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.chatbot-match-summary span {
+  padding: 7px 8px;
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.chatbot-analysis-result__content {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.82rem;
+  line-height: 1.58;
+  white-space: pre-wrap;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 480px) {
+  .chatbot-match-summary {
+    grid-template-columns: 1fr;
+  }
+}
