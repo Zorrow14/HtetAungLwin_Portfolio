@@ -202,3 +202,19 @@
     display: flex;
   }
 }
+
+.logo {
+  text-decoration: none;
+}
+
+.nav-links a.active {
+  color: var(--neon-cyan);
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.mobile-links li a.active {
+  color: var(--neon-cyan);
+}

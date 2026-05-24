@@ -6,7 +6,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import ProjectDemo from './components/ProjectDemo';
-import StarBackground from './components/StarBackground'; // <-- IMPORT NEW COMPONENT
+import StarBackground from './components/StarBackground';
 import BootScreen from './components/BootScreen';
 import ChatBot from './components/ChatBot';
 import BackToTop from './components/BackToTop';
@@ -20,7 +20,7 @@ function App() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target); 
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
@@ -37,13 +37,11 @@ function App() {
     <>
       {!booted && <BootScreen onDone={() => setBooted(true)} />}
 
-      {/* Background Gradients */}
       <div className="bg-animation"></div>
-      
-      {/* Interactive Cursor Stars */}
-      <StarBackground /> 
-      
+      <StarBackground />
+
       <Navbar />
+
       <main>
         <Hero />
         <About />
@@ -51,12 +49,13 @@ function App() {
         <Projects />
         <ProjectDemo />
         <Contact />
+        <EndingQuote />
       </main>
-      <EndingQuote />
+
       <ChatBot />
       <BackToTop />
     </>
-  )
+  );
 }
 
 export default App;

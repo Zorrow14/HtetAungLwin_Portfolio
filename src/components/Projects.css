@@ -340,3 +340,14 @@
     font-size: 0.68rem;
   }
 }
+
+.datapad-bullets li strong {
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.project-datapad:nth-child(even) .datapad-bullets li strong {
+  color: var(--electric-purple);
+}

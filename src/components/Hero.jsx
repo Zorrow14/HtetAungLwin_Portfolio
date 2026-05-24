@@ -9,14 +9,14 @@ const Hero = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const roles = [
-    "Aspiring Software Engineer.",
-    "Junior Full Stack Developer.",
-    "Problem Solver."
+    'Aspiring Software Engineer.',
+    'Junior Full Stack Developer.',
+    'Problem Solver.',
   ];
 
   useEffect(() => {
-    let i = loopNum % roles.length;
-    let fullText = roles[i];
+    const i = loopNum % roles.length;
+    const fullText = roles[i];
 
     const timeout = setTimeout(() => {
       setText(
@@ -43,14 +43,11 @@ const Hero = () => {
   return (
     <section id="hero" className="hero-section">
       <div className="hero-grid">
-
-        {/* Left Column: Hero Text */}
         <div className="hero-text-content animate-on-scroll reveal-left">
           <p className="greeting delay-1">Hello, I'm</p>
 
           <h1 className="name delay-2">Htet Aung Lwin.</h1>
 
-          {/* Dynamic Typewriter Text */}
           <h2 className="title delay-3">
             <span className="gradient-text">{text}</span>
             <span className="typewriter-cursor">|</span>
@@ -88,11 +85,20 @@ const Hero = () => {
 
           <div className="cta-buttons delay-3">
             <a href="#projects" className="btn btn-primary">View Projects</a>
+
+            <a
+              href="https://drive.google.com/file/d/1Q-J7Do9MWsBPV_i6qEPotjVK-MZdO9ss/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className="btn hero-cv-btn"
+            >
+              Download CV
+            </a>
+
             <a href="#contact" className="btn">Get In Touch</a>
           </div>
         </div>
 
-        {/* Right Column: Premium Interactive Profile Space */}
         <div className="hero-avatar-wrapper animate-on-scroll reveal-scale delay-2">
           <div className="avatar-container">
             <div className="avatar-ambient-glow"></div>
@@ -111,15 +117,14 @@ const Hero = () => {
 
             <div className="hud-badge hud-top">
               <span className="hud-dot"></span>
-              <span className="hud-text">STATUS: ACTIVE</span>
+              <span className="hud-text">AVAILABLE</span>
             </div>
 
             <div className="hud-badge hud-bottom">
-              <span className="hud-text">SEC_NODE: OK</span>
+              <span className="hud-text">FULL STACK FOCUS</span>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -18,6 +18,7 @@ const EndingQuote = () => {
         <p className="ending-quote-copyright">
           © 2026 Htet Aung Lwin
         </p>
+        
       </div>
     </section>
   );

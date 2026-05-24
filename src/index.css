@@ -189,3 +189,7 @@ h2 {
   transition: background 0.3s;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--neon-cyan); }
+
+section {
+  scroll-margin-top: 100px;
+}

@@ -5,8 +5,6 @@ const SYSTEM_PROMPT = `You are an AI assistant embedded in Htet Aung Lwin's pers
 
 == ABOUT HTET AUNG LWIN ==
 Full Name: Htet Aung Lwin
-Nationality: Myanmar
-Hometown: Mandalay, Myanmar
 Role: Aspiring Software Engineer | Junior Full Stack Developer | Problem Solver
 Status: Final-semester Diploma in Software Engineering student, actively seeking internship opportunities as a React or Full Stack Developer.
 Internship availability: July 20, 2026 – October 3, 2026.
@@ -15,10 +13,6 @@ Education:
 - Asia Pacific University (APU), Kuala Lumpur
 - Diploma in ICT (Software Engineering)
 - July 2024 – Present
-
-- Inet College, Mandalay, Myanmar
-- Foundation in Computing
-- December 2023 - March 2024
 
 Contact:
 - Email: htetaunglwin223@gmail.com
@@ -254,6 +248,13 @@ Do not claim skills or experience that are not listed in Htet's profile.
     sendMessage(question);
   };
 
+  const getMatchLevel = (analysis) => {
+    const match = analysis.match(/Match Level:\s*(Strong|Moderate|Weak)/i);
+    return match ? match[1].toLowerCase() : null;
+  };
+
+  const matchLevel = getMatchLevel(jobAnalysis);
+
   return (
     <>
       <button
@@ -326,6 +327,10 @@ Do not claim skills or experience that are not listed in Htet's profile.
             JD Match
           </button>
         </div>
+
+        <p className="chatbot-tab-helper">
+          Ask quick questions about Htet or paste a job description for match analysis.
+        </p>
 
         {activeTab === 'chat' && (
           <>
@@ -462,9 +467,17 @@ Do not claim skills or experience that are not listed in Htet's profile.
 
             {jobAnalysis && !isAnalyzing && (
               <div className="chatbot-analysis-result">
-                <span className="chatbot-analysis-result__label">
-                  Analysis result
-                </span>
+                <div className="chatbot-analysis-result__header">
+                  <span className="chatbot-analysis-result__label">
+                    Analysis result
+                  </span>
+
+                  {matchLevel && (
+                    <span className={`chatbot-match-badge chatbot-match-badge--${matchLevel}`}>
+                      {matchLevel.toUpperCase()} MATCH
+                    </span>
+                  )}
+                </div>
 
                 <div className="chatbot-analysis-result__content">
                   {jobAnalysis}

@@ -1,15 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
+const navItems = [
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'demos', label: 'Projects Demo' },
+  { id: 'contact', label: 'Contact Me' },
+];
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      const scrollPosition = window.scrollY + 140;
+
+      let current = 'hero';
+
+      navItems.forEach((item) => {
+        const section = document.getElementById(item.id);
+
+        if (section && section.offsetTop <= scrollPosition) {
+          current = item.id;
+        }
+      });
+
+      setActiveSection(current);
     };
+
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -18,34 +44,46 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled glass-panel' : ''}`}>
       <div className="nav-content">
-        <div className="logo gradient-text">HAL.</div>
+        <a href="#hero" className="logo gradient-text" onClick={closeMenu}>
+          HAL.
+        </a>
 
-        {/* Desktop links */}
         <ul className="nav-links">
-          <li><a href="#about" className="neon-hover">About</a></li>
-          <li><a href="#skills" className="neon-hover">Skills</a></li>
-          <li><a href="#projects" className="neon-hover">Projects</a></li>
-          <li><a href="#demos" className="neon-hover">Projects Demo</a></li>
-          <li><a href="#contact" className="neon-hover">Contact Me</a></li>
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                className={`neon-hover ${activeSection === item.id ? 'active' : ''}`}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        {/* Hamburger button (mobile only) */}
         <button
           className={`hamburger ${menuOpen ? 'open' : ''}`}
-          onClick={() => setMenuOpen(prev => !prev)}
+          onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
-          <span /><span /><span />
+          <span />
+          <span />
+          <span />
         </button>
       </div>
 
-      {/* Mobile dropdown */}
       <ul className={`mobile-links ${menuOpen ? 'open' : ''}`}>
-        <li><a href="#about" onClick={closeMenu}>About</a></li>
-        <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
-        <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
-        <li><a href="#demos" onClick={closeMenu}>Projects Demo</a></li>
-        <li><a href="#contact" onClick={closeMenu}>Contact Me</a></li>
+        {navItems.map((item) => (
+          <li key={item.id}>
+            <a
+              href={`#${item.id}`}
+              onClick={closeMenu}
+              className={activeSection === item.id ? 'active' : ''}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   );
