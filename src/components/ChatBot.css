@@ -314,6 +314,8 @@
   color: rgba(255, 255, 255, 0.88);
   white-space: pre-wrap;
   word-break: break-word;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .chatbot-msg--assistant .chatbot-msg__bubble {
@@ -635,6 +637,8 @@
   font-size: 0.82rem;
   line-height: 1.58;
   white-space: pre-wrap;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* ===== MOBILE ===== */
