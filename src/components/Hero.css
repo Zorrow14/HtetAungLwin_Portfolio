@@ -47,8 +47,61 @@
   font-size: 1.2rem;
   color: var(--text-secondary);
   max-width: 620px;
-  margin-bottom: 50px;
+  margin-bottom: 24px;
   line-height: 1.8;
+}
+
+/* --- Internship Availability Card --- */
+.hero-internship-card {
+  max-width: 660px;
+  margin: 0 0 34px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+.hero-internship-card__top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-internship-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.75);
+}
+
+.hero-internship-card__content {
+  display: grid;
+  grid-template-columns: 1.4fr 1.2fr 1fr;
+  gap: 14px;
+}
+
+.hero-internship-card__content small {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+}
+
+.hero-internship-card__content strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  line-height: 1.4;
 }
 
 .cta-buttons {
@@ -138,10 +191,29 @@
   height: 22px;
 }
 
-.top-left { top: -10px; left: -10px; border-width: 3px 0 0 3px; }
-.top-right { top: -10px; right: -10px; border-width: 3px 3px 0 0; }
-.bottom-left { bottom: -10px; left: -10px; border-width: 0 0 3px 3px; }
-.bottom-right { bottom: -10px; right: -10px; border-width: 0 3px 3px 0; }
+.top-left {
+  top: -10px;
+  left: -10px;
+  border-width: 3px 0 0 3px;
+}
+
+.top-right {
+  top: -10px;
+  right: -10px;
+  border-width: 3px 3px 0 0;
+}
+
+.bottom-left {
+  bottom: -10px;
+  left: -10px;
+  border-width: 0 0 3px 3px;
+}
+
+.bottom-right {
+  bottom: -10px;
+  right: -10px;
+  border-width: 0 3px 3px 0;
+}
 
 /* The Framed Portrait Image Container */
 .avatar-frame {
@@ -198,7 +270,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
               linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
   background-size: 100% 4px, 6px 100%;
   z-index: 4;
@@ -255,35 +327,73 @@
 
 /* --- KEYFRAME ANIMATIONS --- */
 @keyframes spin-clockwise {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin-counter {
-  0% { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes float-avatar {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes pulse-glow {
-  0% { transform: scale(0.95); opacity: 0.7; }
-  100% { transform: scale(1.1); opacity: 0.95; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 0.95;
+  }
 }
 
 @keyframes pulse-dot {
-  0% { opacity: 0.3; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes scan {
-  0% { top: -10%; }
-  50% { top: 110%; }
-  100% { top: -10%; }
+  0% {
+    top: -10%;
+  }
+
+  50% {
+    top: 110%;
+  }
+
+  100% {
+    top: -10%;
+  }
 }
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
@@ -292,23 +402,38 @@
     grid-template-columns: 1.1fr 0.9fr;
     gap: 40px;
   }
-  .name { font-size: 4rem; }
-  .title { font-size: 2.8rem; }
+
+  .name {
+    font-size: 4rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
   .avatar-container {
     width: 280px;
     height: 280px;
   }
+
   .avatar-frame {
     width: 250px;
     height: 250px;
   }
+
   .avatar-ring-outer {
     width: 330px;
     height: 330px;
   }
+
   .avatar-ring-inner {
     width: 300px;
     height: 300px;
+  }
+
+  .hero-internship-card__content {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 }
 
@@ -318,18 +443,34 @@
     text-align: center;
     gap: 70px;
   }
+
   .hero-text-content {
     order: 2;
     align-items: center;
   }
+
   .hero-avatar-wrapper {
     order: 1;
     margin-top: 30px;
   }
+
   .description {
     margin-left: auto;
     margin-right: auto;
   }
+
+  .hero-internship-card {
+    width: 100%;
+  }
+
+  .hero-internship-card__top {
+    justify-content: center;
+  }
+
+  .hero-internship-card__content {
+    text-align: center;
+  }
+
   .cta-buttons {
     justify-content: center;
   }
@@ -339,25 +480,52 @@
   .hero-section {
     padding-top: 100px;
   }
-  .name { font-size: 3rem; }
-  .title { font-size: 2rem; }
-  .description { font-size: 1.1rem; }
+
+  .name {
+    font-size: 3rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+  }
+
+  .hero-internship-card {
+    padding: 15px;
+    margin-bottom: 28px;
+  }
+
+  .hero-internship-card__top {
+    font-size: 0.7rem;
+  }
+
+  .hero-internship-card__content strong {
+    font-size: 0.8rem;
+  }
+
   .avatar-container {
     width: 240px;
     height: 240px;
   }
+
   .avatar-frame {
     width: 210px;
     height: 210px;
   }
+
   .avatar-ring-outer {
     width: 280px;
     height: 280px;
   }
+
   .avatar-ring-inner {
     width: 255px;
     height: 255px;
   }
+
   .hud-badge {
     font-size: 0.65rem;
   }
@@ -373,6 +541,11 @@
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }

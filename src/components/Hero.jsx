@@ -19,24 +19,21 @@ const Hero = () => {
     let fullText = roles[i];
 
     const timeout = setTimeout(() => {
-      setText(isDeleting 
-        ? fullText.substring(0, text.length - 1) 
-        : fullText.substring(0, text.length + 1)
+      setText(
+        isDeleting
+          ? fullText.substring(0, text.length - 1)
+          : fullText.substring(0, text.length + 1)
       );
 
-      // Adjust typing speed based on action
       setTypingSpeed(isDeleting ? 50 : 120);
 
-      // If word is fully typed, pause before deleting
       if (!isDeleting && text === fullText) {
-        setTypingSpeed(2000); // 2-second pause at the end of the word
+        setTypingSpeed(2000);
         setIsDeleting(true);
-      } 
-      // If word is completely deleted, move to the next word
-      else if (isDeleting && text === '') {
+      } else if (isDeleting && text === '') {
         setIsDeleting(false);
         setLoopNum(loopNum + 1);
-        setTypingSpeed(500); // Short pause before typing the next word
+        setTypingSpeed(500);
       }
     }, typingSpeed);
 
@@ -46,23 +43,49 @@ const Hero = () => {
   return (
     <section id="hero" className="hero-section">
       <div className="hero-grid">
-        
+
         {/* Left Column: Hero Text */}
         <div className="hero-text-content animate-on-scroll reveal-left">
           <p className="greeting delay-1">Hello, I'm</p>
+
           <h1 className="name delay-2">Htet Aung Lwin.</h1>
-          
+
           {/* Dynamic Typewriter Text */}
           <h2 className="title delay-3">
             <span className="gradient-text">{text}</span>
             <span className="typewriter-cursor">|</span>
           </h2>
-          
+
           <p className="description delay-3">
-            Final-semester Software Engineering student focused on React, Node.js,
+            Final-semester Diploma in Software Engineering student focused on React, Node.js,
             and full-stack web development. I build clean, responsive applications
             with strong backend foundations and practical user-focused design.
           </p>
+
+          <div className="hero-internship-card delay-3">
+            <div className="hero-internship-card__top">
+              <span className="hero-internship-card__dot"></span>
+              <span>Open to Internship</span>
+            </div>
+
+            <div className="hero-internship-card__content">
+              <div>
+                <small>Role</small>
+                <strong>Software / React / Full Stack Developer</strong>
+              </div>
+
+              <div>
+                <small>Available</small>
+                <strong>20 July 2026 – 3 October 2026</strong>
+              </div>
+
+              <div>
+                <small>Location</small>
+                <strong>Kuala Lumpur / Remote</strong>
+              </div>
+            </div>
+          </div>
+
           <div className="cta-buttons delay-3">
             <a href="#projects" className="btn btn-primary">View Projects</a>
             <a href="#contact" className="btn">Get In Touch</a>
@@ -90,6 +113,7 @@ const Hero = () => {
               <span className="hud-dot"></span>
               <span className="hud-text">STATUS: ACTIVE</span>
             </div>
+
             <div className="hud-badge hud-bottom">
               <span className="hud-text">SEC_NODE: OK</span>
             </div>

@@ -13,160 +13,330 @@
 .projects-showcase {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 40px;
+  margin-top: 50px;
 }
 
-.project-case-card {
-  display: block;
+/* ── Animated Project Datapad ── */
+.project-datapad {
+  display: flex;
   text-decoration: none;
   color: inherit;
   border-radius: 20px;
-  padding: 30px;
-  position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(15, 23, 42, 0.72);
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  position: relative;
+  min-height: 260px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 35, 0.62) 0%,
+    rgba(10, 10, 20, 0.86) 100%
+  );
+  backdrop-filter: blur(15px);
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
 }
 
-.project-case-card::before {
-  content: "";
+/* Alternating border glow colors */
+.project-datapad:nth-child(odd) {
+  border-left: 4px solid var(--neon-cyan);
+}
+
+.project-datapad:nth-child(even) {
+  border-right: 4px solid var(--electric-purple);
+  flex-direction: row-reverse;
+}
+
+/* Hover animation */
+.project-datapad:hover {
+  transform: translateY(-7px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(
+    135deg,
+    rgba(20, 24, 42, 0.82) 0%,
+    rgba(10, 10, 20, 0.94) 100%
+  );
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.52),
+    0 0 24px rgba(0, 212, 255, 0.1);
+}
+
+.project-datapad:nth-child(odd):hover {
+  border-left-color: var(--neon-cyan);
+}
+
+.project-datapad:nth-child(even):hover {
+  border-right-color: var(--electric-purple);
+}
+
+/* ── Scanning Line Effect ── */
+.scan-effect {
   position: absolute;
-  inset: 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--neon-cyan), var(--electric-purple));
-  opacity: 0.85;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.07),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.project-case-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 212, 255, 0.24);
-  background: rgba(15, 23, 42, 0.88);
+.project-datapad:hover .scan-effect {
+  left: 150%;
 }
 
-.project-case-header {
+/* ── Datapad Header ── */
+.datapad-header {
+  flex: 0.9;
+  padding: 34px;
   display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  align-items: flex-start;
-  margin-bottom: 24px;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .project-index {
-  display: block;
-  margin-bottom: 8px;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  letter-spacing: 0.12em;
+  opacity: 0.55;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
 }
 
 .project-tag {
-  display: inline-block;
+  width: fit-content;
+  margin-bottom: 18px;
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(0, 212, 255, 0.07);
   border: 1px solid rgba(0, 212, 255, 0.16);
   color: var(--neon-cyan);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
 
-.project-case-header h3 {
-  margin: 0;
+.project-datapad:nth-child(even) .project-tag {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.16);
+  color: var(--electric-purple);
+}
+
+.datapad-header h3 {
   font-family: var(--font-mono);
-  font-size: 1.8rem;
+  font-size: 1.85rem;
   color: var(--text-primary);
-  text-align: right;
+  margin: 0 0 22px;
+  line-height: 1.2;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
-.project-case-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.project-case-block {
-  padding: 18px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.065);
-}
-
-.project-case-block span {
-  display: block;
-  margin-bottom: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.project-datapad:hover .datapad-header h3 {
   color: var(--neon-cyan);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(0, 212, 255, 0.18);
+  transform: translateX(2px);
 }
 
-.project-case-block p {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.65;
+.project-datapad:nth-child(even):hover .datapad-header h3 {
+  color: var(--electric-purple);
+  text-shadow: 0 0 14px rgba(168, 85, 247, 0.2);
 }
 
-.project-case-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  margin-top: 24px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-
+/* ── Tech Pills ── */
 .datapad-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
+  gap: 10px;
 }
 
 .tech-pill {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 999px;
+  padding: 6px 11px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
   color: var(--text-secondary);
+  letter-spacing: 0.4px;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 
-.project-view-link {
-  white-space: nowrap;
+.project-datapad:hover .tech-pill {
+  transform: translateY(-1px);
+  border-color: rgba(0, 212, 255, 0.28);
   color: var(--neon-cyan);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
+  background: rgba(0, 212, 255, 0.05);
 }
 
+.project-datapad:nth-child(even):hover .tech-pill {
+  border-color: rgba(168, 85, 247, 0.28);
+  color: var(--electric-purple);
+  background: rgba(168, 85, 247, 0.055);
+}
+
+/* ── Datapad Body ── */
+.datapad-body {
+  flex: 1.45;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.datapad-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.datapad-bullets li {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.62;
+  position: relative;
+  padding-left: 22px;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.datapad-bullets li::before {
+  content: "»";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--neon-cyan);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.project-datapad:nth-child(even) .datapad-bullets li::before {
+  color: var(--electric-purple);
+}
+
+.project-datapad:hover .datapad-bullets li {
+  color: rgba(255, 255, 255, 0.78);
+  transform: translateX(2px);
+}
+
+/* ── Animated Status Indicator ── */
+.datapad-status {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.65;
+  letter-spacing: 1px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  100% {
+    opacity: 0.45;
+    transform: scale(0.9);
+  }
+}
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
-  .project-case-header {
+  .project-datapad,
+  .project-datapad:nth-child(even) {
     flex-direction: column;
+    border-right: none;
+    border-left: 4px solid var(--neon-cyan);
   }
 
-  .project-case-header h3 {
-    text-align: left;
+  .project-datapad:nth-child(even):hover {
+    border-left-color: var(--electric-purple);
   }
 
-  .project-case-grid {
-    grid-template-columns: 1fr;
+  .datapad-header,
+  .datapad-body {
+    padding: 25px;
   }
 
-  .project-case-footer {
-    flex-direction: column;
-    align-items: flex-start;
+  .datapad-header h3 {
+    font-size: 1.5rem;
   }
 
-  .project-case-card {
-    padding: 24px;
+  .projects-intro {
+    margin-bottom: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-showcase {
+    gap: 28px;
+  }
+
+  .project-datapad {
+    min-height: auto;
+    border-radius: 16px;
+  }
+
+  .datapad-header,
+  .datapad-body {
+    padding: 22px;
+  }
+
+  .datapad-bullets li {
+    font-size: 0.88rem;
+  }
+
+  .tech-pill {
+    font-size: 0.68rem;
   }
 }
