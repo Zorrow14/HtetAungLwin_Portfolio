@@ -14,7 +14,7 @@ const ProjectDemo = () => {
       description: "Live embedded walkthrough: Test out the real-time search and debouncing instantly.",
       tech: ["React 19", "OMDb API", "Framer Motion"],
       actionLink: "https://movie-search-engine-ruddy.vercel.app/",
-      actionText: "LAUNCH LIVE SITE ↗"
+      actionText: "LAUNCH LIVE SITE ↗\uFE0E"
     },
     {
       title: "AuraGains",
@@ -24,7 +24,7 @@ const ProjectDemo = () => {
       description: "Preview the strict MVVM architecture and native Android hardware integrations.",
       tech: ["Flutter", "Supabase", "Dart"],
       actionLink: "YOUR_GOOGLE_DRIVE_APK_LINK_HERE", // <-- PUT YOUR GOOGLE DRIVE LINK HERE
-      actionText: "DOWNLOAD APK ↓"
+      actionText: "DOWNLOAD APK ↓\uFE0E"
     },
     {
       title: "EcoQuest",
@@ -34,7 +34,7 @@ const ProjectDemo = () => {
       description: "Dashboard overview, user management flow, and the automated moderation log.",
       tech: ["PHP", "MySQL", "JavaScript"],
       actionLink: "https://github.com/lw112k/EcoQuest",
-      actionText: "VIEW SOURCE ↗"
+      actionText: "VIEW SOURCE ↗\uFE0E"
     },
     {
       title: "Expense Manager",
@@ -44,7 +44,7 @@ const ProjectDemo = () => {
       description: "CLI walkthrough: adding, categorising, and exporting transactions with JSON persistence.",
       tech: ["Python", "JSON"],
       actionLink: "https://github.com/Zorrow14/Expense_Management_System_PY",
-      actionText: "VIEW SOURCE ↗"
+      actionText: "VIEW SOURCE ↗\uFE0E"
     },
     {
       title: "EduManage",
@@ -54,7 +54,7 @@ const ProjectDemo = () => {
       description: "Auth flow, grade viewing, and the collaborative academic dashboard in action.",
       tech: ["Python"],
       actionLink: "https://github.com/lw112k/Education-Management-System-PY",
-      actionText: "VIEW SOURCE ↗"
+      actionText: "VIEW SOURCE ↗\uFE0E"
     }
   ];
 
