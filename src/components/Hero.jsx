@@ -73,7 +73,7 @@ const Hero = () => {
 
               <div>
                 <small>Available</small>
-                <strong>20 July 2026 – 3 October 2026</strong>
+                <strong>20 July 2026 – 9 October 2026</strong>
               </div>
 
               <div>
