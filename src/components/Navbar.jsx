@@ -4,6 +4,7 @@ import './Navbar.css';
 const navItems = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
+  { id: 'ai-productivity', label: 'AI & Productivity' },
   { id: 'projects', label: 'Featured Projects' },
   { id: 'demos', label: 'System Demos' },
   { id: 'contact', label: 'Get In Touch' },

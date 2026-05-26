@@ -135,7 +135,7 @@ const Contact = () => {
   return (
     <section id="contact" className="contact-section">
       <h2 className="section-title">
-        <span className="gradient-text">05.</span> Get In Touch
+        <span className="gradient-text">06.</span> Get In Touch
       </h2>
 
       <p className="contact-intro">

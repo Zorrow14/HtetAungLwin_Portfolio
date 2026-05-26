@@ -128,7 +128,7 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section animate-on-scroll reveal-up">
       <h2 className="section-title">
-        <span className="gradient-text">03.</span> Featured Projects
+        <span className="gradient-text">04.</span> Featured Projects
       </h2>
 
       <p className="projects-intro">

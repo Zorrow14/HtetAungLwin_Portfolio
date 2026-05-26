@@ -73,7 +73,7 @@ const ProjectDemo = () => {
     <section id="demos" className="demo-section animate-on-scroll reveal-up">
       <div className="demo-header-title">
         <h2 className="section-title">
-          <span className="gradient-text">04.</span> System Demos
+          <span className="gradient-text">05.</span> System Demos
         </h2>
         <p className="demo-subtitle">Initialize simulation: Interactive previews & live walkthroughs.</p>
       </div>

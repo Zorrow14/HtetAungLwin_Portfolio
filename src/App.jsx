@@ -12,6 +12,7 @@ import ChatBot from './components/ChatBot';
 import BackToTop from './components/BackToTop';
 import EndingQuote from './components/EndingQuote';
 import CustomCursor from './components/CustomCursor';
+import AIProductivity from './components/AIProductivity';
 
 function App() {
   const [booted, setBooted] = useState(false);
@@ -47,6 +48,7 @@ function App() {
         <Hero />
         <About />
         <Skills />
+        <AIProductivity />
         <Projects />
         <ProjectDemo />
         <Contact />

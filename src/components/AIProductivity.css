@@ -1,0 +1,235 @@
+.ai-productivity-section {
+  padding-top: 120px;
+}
+
+.ai-productivity-intro {
+  max-width: 850px;
+  margin: 18px 0 46px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ===== AI TOOLS LIST ===== */
+.ai-tools-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.ai-tool-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 92px;
+  padding: 20px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.ai-tool-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    var(--neon-cyan),
+    var(--electric-purple)
+  );
+  opacity: 0.85;
+}
+
+.ai-tool-row::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -25%;
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.12),
+    rgba(168, 85, 247, 0.08),
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.ai-tool-row:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.24);
+  background: rgba(15, 23, 42, 0.88);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.32),
+    0 0 22px rgba(0, 212, 255, 0.08);
+}
+
+.ai-tool-row:hover::after {
+  opacity: 1;
+}
+
+/* ===== ICON / LOGO ===== */
+.ai-tool-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: rgba(0, 212, 255, 0.07);
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.ai-tool-row:hover .ai-tool-icon-wrap {
+  background: rgba(0, 212, 255, 0.12);
+  border-color: rgba(0, 212, 255, 0.36);
+  transform: translateY(-2px);
+}
+
+.ai-tool-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+.ai-tool-fallback {
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ===== TEXT ===== */
+.ai-tool-content {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ai-tool-index {
+  display: block;
+  margin-bottom: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--neon-cyan);
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+.ai-tool-content h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+/* ===== ALTERNATE PURPLE ACCENTS ===== */
+.ai-tool-row:nth-child(even) .ai-tool-icon-wrap {
+  background: rgba(168, 85, 247, 0.07);
+  border-color: rgba(168, 85, 247, 0.18);
+}
+
+.ai-tool-row:nth-child(even) .ai-tool-index,
+.ai-tool-row:nth-child(even) .ai-tool-fallback {
+  color: var(--electric-purple);
+}
+
+.ai-tool-row:nth-child(even):hover {
+  border-color: rgba(168, 85, 247, 0.24);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.32),
+    0 0 22px rgba(168, 85, 247, 0.08);
+}
+
+.ai-tool-row:nth-child(even):hover .ai-tool-icon-wrap {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.36);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+  .ai-tools-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .ai-productivity-section {
+    padding-top: 100px;
+  }
+
+  .ai-productivity-intro {
+    font-size: 0.94rem;
+    line-height: 1.7;
+    margin-bottom: 34px;
+  }
+
+  .ai-tools-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-tool-row {
+    min-height: 84px;
+    padding: 18px;
+    gap: 14px;
+  }
+
+  .ai-tool-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .ai-tool-logo {
+    width: 22px;
+    height: 22px;
+  }
+
+  .ai-tool-content h3 {
+    font-size: 0.95rem;
+  }
+}
+
+.ai-tool-custom-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ai-tool-inline-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.ai-tool-row:nth-child(even) .ai-tool-custom-icon {
+  color: var(--electric-purple);
+}
