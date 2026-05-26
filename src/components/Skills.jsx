@@ -53,7 +53,7 @@ const Skills = () => {
 
   return (
     <section id="skills" className="skills-section animate-on-scroll reveal-up">
-      <h2 className="section-title"><span className="gradient-text">02.</span> Technical Skills</h2>
+      <h2 className="section-title"><span className="gradient-text">02.</span> Skills</h2>
       
       <div className="skills-circuit">
         {skillCategories.map((category, idx) => (

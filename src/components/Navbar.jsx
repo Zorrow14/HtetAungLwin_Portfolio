@@ -4,9 +4,9 @@ import './Navbar.css';
 const navItems = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'demos', label: 'Projects Demo' },
-  { id: 'contact', label: 'Contact Me' },
+  { id: 'projects', label: 'Featured Projects' },
+  { id: 'demos', label: 'System Demos' },
+  { id: 'contact', label: 'Get In Touch' },
 ];
 
 const Navbar = () => {
