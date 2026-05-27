@@ -2,11 +2,31 @@ import React, { useEffect, useState } from 'react';
 import './CustomCursor.css';
 
 const CustomCursor = () => {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isPointer, setIsPointer] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
+    const checkTouchDevice = () => {
+      const hasTouch =
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(hover: none)').matches ||
+        window.matchMedia('(pointer: coarse)').matches;
+
+      setIsTouchDevice(hasTouch);
+    };
+
+    checkTouchDevice();
+    window.addEventListener('resize', checkTouchDevice);
+
+    return () => window.removeEventListener('resize', checkTouchDevice);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e) => {
       setPosition({
         x: e.clientX,
@@ -15,26 +35,19 @@ const CustomCursor = () => {
 
       const target = e.target;
 
-      if (
+      const isClickable =
         target.closest('a') ||
         target.closest('button') ||
         target.closest('input') ||
         target.closest('textarea') ||
-        target.closest('[role="button"]')
-      ) {
-        setIsPointer(true);
-      } else {
-        setIsPointer(false);
-      }
+        target.closest('select') ||
+        target.closest('[role="button"]');
+
+      setIsPointer(Boolean(isClickable));
     };
 
-    const handleMouseLeave = () => {
-      setIsHidden(true);
-    };
-
-    const handleMouseEnter = () => {
-      setIsHidden(false);
-    };
+    const handleMouseLeave = () => setIsHidden(true);
+    const handleMouseEnter = () => setIsHidden(false);
 
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
@@ -45,7 +58,9 @@ const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, []);
+  }, [isTouchDevice]);
+
+  if (isTouchDevice) return null;
 
   return (
     <div

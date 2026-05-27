@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const EmailIcon = () => (
@@ -67,11 +68,25 @@ const DownloadIcon = () => (
 const Contact = () => {
   const emailAddress = 'htetaunglwin223@gmail.com';
 
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState('idle');
   const [copied, setCopied] = useState(false);
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleCopyEmail = async () => {
     try {
@@ -83,18 +98,51 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { name, email, message } = formData;
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus('config-error');
+      return;
+    }
 
-    const mailtoLink = `mailto:${emailAddress}?subject=Message from ${encodeURIComponent(
-      name
-    )}&body=${encodeURIComponent(`From: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    setStatus('sending');
 
-    window.location.href = mailtoLink;
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: emailAddress,
+        },
+        publicKey
+      );
+
+      setStatus('success');
+
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+
+      setTimeout(() => setStatus('idle'), 3500);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3500);
+    }
+  };
+
+  const getButtonText = () => {
+    if (status === 'sending') return 'SENDING...';
+    if (status === 'success') return 'MESSAGE SENT ✓';
+    if (status === 'error') return 'FAILED — TRY AGAIN';
+    if (status === 'config-error') return 'EMAILJS NOT CONFIGURED';
+    return 'SEND MESSAGE →';
   };
 
   const contactInfo = [
@@ -149,6 +197,7 @@ const Contact = () => {
         <p>
           Want a <strong>fast reply?</strong> Ask my{' '}
           <button
+            type="button"
             className="nudge-chatbot-link"
             onClick={() => document.querySelector('.chatbot-fab')?.click()}
           >
@@ -167,7 +216,11 @@ const Contact = () => {
             >
               <a
                 href={item.href}
-                target={item.href.startsWith('mailto') || item.href.startsWith('tel') ? undefined : '_blank'}
+                target={
+                  item.href.startsWith('mailto') || item.href.startsWith('tel')
+                    ? undefined
+                    : '_blank'
+                }
                 rel="noreferrer"
                 className="contact-info-main"
               >
@@ -208,6 +261,7 @@ const Contact = () => {
                 placeholder="Your name"
                 className="form-input"
                 required
+                disabled={status === 'sending'}
               />
             </div>
 
@@ -223,6 +277,7 @@ const Contact = () => {
                 placeholder="you@institution.edu"
                 className="form-input"
                 required
+                disabled={status === 'sending'}
               />
             </div>
 
@@ -236,12 +291,35 @@ const Contact = () => {
                 className="form-input form-textarea"
                 rows={5}
                 required
+                disabled={status === 'sending'}
               />
             </div>
 
-            <button type="submit" className="contact-send-btn">
-              {sent ? 'Opening Mail Client...' : 'SEND MESSAGE →'}
+            <button
+              type="submit"
+              className={`contact-send-btn contact-send-btn--${status}`}
+              disabled={status === 'sending'}
+            >
+              {getButtonText()}
             </button>
+
+            {status === 'success' && (
+              <p className="contact-form-status contact-form-status--success">
+                Thanks! Your message has been sent directly to my inbox.
+              </p>
+            )}
+
+            {status === 'error' && (
+              <p className="contact-form-status contact-form-status--error">
+                Something went wrong. Please try again or email me directly.
+              </p>
+            )}
+
+            {status === 'config-error' && (
+              <p className="contact-form-status contact-form-status--error">
+                EmailJS is not configured yet. Please check your Vercel environment variables.
+              </p>
+            )}
           </form>
         </div>
       </div>
