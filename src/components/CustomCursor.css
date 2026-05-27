@@ -50,7 +50,7 @@
 }
 
 /* Force disable on all phones, iPads, tablets, and touch devices */
-@media (hover: none), (pointer: coarse), (max-width: 1180px) {
+@media (hover: none), (pointer: coarse), (max-width: 1368px) {
   body,
   a,
   button,
