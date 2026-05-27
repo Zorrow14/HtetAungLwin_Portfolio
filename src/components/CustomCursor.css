@@ -1,4 +1,4 @@
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) and (min-width: 1181px) {
   body,
   a,
   button,
@@ -49,8 +49,8 @@
   opacity: 0;
 }
 
-/* Fully disable on phone, iPad, tablets, and touch devices */
-@media (hover: none), (pointer: coarse), (max-width: 1024px) {
+/* Force disable on all phones, iPads, tablets, and touch devices */
+@media (hover: none), (pointer: coarse), (max-width: 1180px) {
   body,
   a,
   button,

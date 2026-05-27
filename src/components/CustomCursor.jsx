@@ -1,31 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import './CustomCursor.css';
 
+const isMobileOrTabletDevice = () => {
+  if (typeof window === 'undefined') return true;
+
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  const isMobileUA =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+
+  const isIPadDesktopMode =
+    navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+
+  const isTouchDevice =
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    window.matchMedia('(hover: none)').matches ||
+    window.matchMedia('(pointer: coarse)').matches;
+
+  const isTabletWidth = window.innerWidth <= 1180;
+
+  return isMobileUA || isIPadDesktopMode || isTouchDevice || isTabletWidth;
+};
+
 const CustomCursor = () => {
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isPointer, setIsPointer] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
-    const checkTouchDevice = () => {
-      const hasTouch =
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0 ||
-        window.matchMedia('(hover: none)').matches ||
-        window.matchMedia('(pointer: coarse)').matches;
-
-      setIsTouchDevice(hasTouch);
+    const checkDevice = () => {
+      setDisabled(isMobileOrTabletDevice());
     };
 
-    checkTouchDevice();
-    window.addEventListener('resize', checkTouchDevice);
+    checkDevice();
 
-    return () => window.removeEventListener('resize', checkTouchDevice);
+    window.addEventListener('resize', checkDevice);
+    window.addEventListener('orientationchange', checkDevice);
+
+    return () => {
+      window.removeEventListener('resize', checkDevice);
+      window.removeEventListener('orientationchange', checkDevice);
+    };
   }, []);
 
   useEffect(() => {
-    if (isTouchDevice) return;
+    if (disabled) return;
 
     const handleMouseMove = (e) => {
       setPosition({
@@ -58,9 +79,9 @@ const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, [isTouchDevice]);
+  }, [disabled]);
 
-  if (isTouchDevice) return null;
+  if (disabled) return null;
 
   return (
     <div
