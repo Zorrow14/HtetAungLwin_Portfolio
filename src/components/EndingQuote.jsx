@@ -6,7 +6,6 @@ const EndingQuote = () => {
     <section className="ending-quote-section">
       <div className="ending-quote-container">
         <h2 className="ending-quote-text">
-          Once a man told me — <br />
           <span>
             “Even if the beginning is not good, everything is fine as long as the
             result is good.”
