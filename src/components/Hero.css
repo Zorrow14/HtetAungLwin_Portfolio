@@ -5,6 +5,27 @@
   overflow: hidden;
 }
 
+/* Cinematic letterbox bars — widescreen film framing for the hero only */
+.hero-section::before,
+.hero-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(18px, 4vh, 48px);
+  background: #000;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-section::before {
+  top: 0;
+}
+
+.hero-section::after {
+  bottom: 0;
+}
+
 .hero-grid {
   display: flex;
   justify-content: center;
@@ -24,19 +45,20 @@
   font-size: 1.2rem;
   margin-bottom: 20px;
   letter-spacing: 2px;
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+  text-shadow: 0 0 10px rgba(240, 180, 41, 0.3);
 }
 
 .name {
-  font-size: 5rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.5rem + 5vw, 5.5rem);
+  font-weight: 700;
   margin-bottom: 10px;
   color: var(--text-primary);
-  letter-spacing: -1px;
+  letter-spacing: -0.01em;
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: clamp(1.7rem, 1rem + 3.4vw, 3.6rem);
   font-weight: 700;
   color: var(--text-secondary);
   margin-bottom: 30px;
@@ -57,7 +79,7 @@
   padding: 16px 18px;
   border-radius: 16px;
   background: rgba(15, 23, 42, 0.72);
-  border: 1px solid rgba(0, 212, 255, 0.18);
+  border: 1px solid rgba(240, 180, 41, 0.18);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(10px);
 }
@@ -110,14 +132,6 @@
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1024px) {
-  .name {
-    font-size: 4rem;
-  }
-
-  .title {
-    font-size: 2.8rem;
-  }
-
   .hero-internship-card__content {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -160,14 +174,6 @@
     padding-top: 100px;
   }
 
-  .name {
-    font-size: 3rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
   .description {
     font-size: 1.1rem;
   }
@@ -206,8 +212,67 @@
 }
 
 .hero-cv-btn {
-  border-color: rgba(0, 212, 255, 0.28);
+  border-color: rgba(240, 180, 41, 0.28);
   color: var(--neon-cyan);
+}
+
+/* ── Scroll Cue ── */
+.hero-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 64px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  z-index: 3;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
+}
+
+.hero-scroll-cue:hover {
+  opacity: 1;
+}
+
+.hero-scroll-cue__label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.hero-scroll-cue__line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--neon-cyan), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-scroll-cue__line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--text-primary));
+  animation: scroll-cue-fall 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-cue-fall {
+  0% { top: -100%; }
+  60%, 100% { top: 100%; }
+}
+
+@media (max-width: 900px) {
+  .hero-scroll-cue {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {

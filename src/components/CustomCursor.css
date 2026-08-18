@@ -20,11 +20,11 @@
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  background: rgba(0, 212, 255, 0.18);
-  border: 1.5px solid rgba(0, 212, 255, 0.85);
+  background: rgba(240, 180, 41, 0.18);
+  border: 1.5px solid rgba(240, 180, 41, 0.85);
   box-shadow:
-    0 0 10px rgba(0, 212, 255, 0.35),
-    inset 0 0 8px rgba(0, 212, 255, 0.18);
+    0 0 10px rgba(240, 180, 41, 0.35),
+    inset 0 0 8px rgba(240, 180, 41, 0.18);
   opacity: 1;
   transition:
     width 0.16s ease,
@@ -38,11 +38,11 @@
 .custom-cursor--pointer {
   width: 32px;
   height: 32px;
-  background: rgba(168, 85, 247, 0.16);
-  border-color: rgba(168, 85, 247, 0.9);
+  background: rgba(245, 216, 144, 0.16);
+  border-color: rgba(245, 216, 144, 0.9);
   box-shadow:
-    0 0 14px rgba(168, 85, 247, 0.38),
-    inset 0 0 10px rgba(168, 85, 247, 0.18);
+    0 0 14px rgba(245, 216, 144, 0.38),
+    inset 0 0 10px rgba(245, 216, 144, 0.18);
 }
 
 .custom-cursor--hidden {

@@ -29,19 +29,19 @@ const aiTools = [
   },
   {
     name: 'GitHub Copilot',
-    logo: 'https://cdn.simpleicons.org/githubcopilot/00D4FF',
+    logo: 'https://cdn.simpleicons.org/githubcopilot/F0B429',
   },
   {
     name: 'Cursor AI',
-    logo: 'https://cdn.simpleicons.org/cursor/00D4FF',
+    logo: 'https://cdn.simpleicons.org/cursor/F0B429',
   },
   {
     name: 'Claude',
-    logo: 'https://cdn.simpleicons.org/anthropic/A855F7',
+    logo: 'https://cdn.simpleicons.org/anthropic/F5D890',
   },
   {
     name: 'Gemini',
-    logo: 'https://cdn.simpleicons.org/googlegemini/A855F7',
+    logo: 'https://cdn.simpleicons.org/googlegemini/F5D890',
   },
   {
     name: 'Groq',
@@ -83,7 +83,7 @@ const AIProductivity = () => {
           <div
             key={tool.name}
             className="ai-tool-row glass-panel animate-on-scroll reveal-up"
-            style={{ animationDelay: `${index * 0.05}s` }}
+            style={{ transitionDelay: `${index * 0.05}s` }}
           >
             <div className="ai-tool-icon-wrap">
               {tool.logo && (

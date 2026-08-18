@@ -7,16 +7,6 @@ const ProjectDemo = () => {
 
   const demos = [
     {
-      title: "TimeSlot API",
-      label: "Concurrency-Safe Booking API",
-      websiteUrl: null,
-      youtubeId: "",
-      description: "Live interactive Swagger docs: try the booking endpoints directly and see the double-booking guard in action. First request may take ~50s to wake the free-tier instance.",
-      tech: ["FastAPI", "PostgreSQL", "JWT"],
-      actionLink: "https://timeslot-api.onrender.com/docs",
-      actionText: "VIEW LIVE API DOCS ↗︎"
-    },
-    {
       title: "CareerSync AI",
       label: "AI Career OS Platform",
       websiteUrl: "https://careersync-ai-careeros.vercel.app/",
@@ -27,16 +17,6 @@ const ProjectDemo = () => {
       actionText: "LAUNCH LIVE SITE ↗︎"
     },
     {
-      title: "AuraGains",
-      label: "Social Fitness Platform",
-      youtubeId: "",
-      websiteUrl: null,
-      description: "Preview the strict MVVM architecture and native Android hardware integrations.",
-      tech: ["Flutter", "Supabase", "Dart"],
-      actionLink: "https://drive.google.com/file/d/1E50Fhlve2BRHRDJg31YR2uwuzjz6tqAp/view?usp=drive_link", // <-- PUT YOUR GOOGLE DRIVE LINK HERE
-      actionText: "DOWNLOAD APK ↓︎"
-    },
-    {
       title: "EcoQuest",
       label: "Admin Dashboard",
       youtubeId: "iwlCetZ5YNQ",
@@ -45,6 +25,26 @@ const ProjectDemo = () => {
       tech: ["PHP", "MySQL", "JavaScript"],
       actionLink: "https://github.com/lw112k/EcoQuest",
       actionText: "VIEW SOURCE ↗︎"
+    },
+    {
+      title: "TimeSlot API",
+      label: "Concurrency-Safe Booking API",
+      websiteUrl: null,
+      youtubeId: "",
+      description: "Live interactive Swagger docs: try the booking endpoints directly and see the double-booking guard in action. First request may take ~50s to wake the free-tier instance.",
+      tech: ["FastAPI", "PostgreSQL", "JWT"],
+      actionLink: "https://timeslot-api.onrender.com/docs",
+      actionText: "VIEW LIVE API DOCS ↗︎"
+    },
+    {
+      title: "AuraGains",
+      label: "Social Fitness Platform",
+      youtubeId: "",
+      websiteUrl: null,
+      description: "Preview the strict MVVM architecture and native Android hardware integrations.",
+      tech: ["Flutter", "Supabase", "Dart"],
+      actionLink: "https://drive.google.com/file/d/1E50Fhlve2BRHRDJg31YR2uwuzjz6tqAp/view?usp=drive_link", // <-- PUT YOUR GOOGLE DRIVE LINK HERE
+      actionText: "DOWNLOAD APK ↓︎"
     },
     {
       title: "Sprout",
@@ -106,7 +106,7 @@ const ProjectDemo = () => {
         <h2 className="section-title">
           <span className="gradient-text">05.</span> System Demos
         </h2>
-        <p className="demo-subtitle">Initialize simulation: Interactive previews & live walkthroughs.</p>
+        <p className="demo-subtitle">Interactive previews and live walkthroughs of select projects.</p>
       </div>
 
       <div className="demo-command-deck">
@@ -120,7 +120,7 @@ const ProjectDemo = () => {
               onClick={() => handleTabChange(idx)}
             >
               <div className="node-glow"></div>
-              <span className="node-index">SYS_0{idx + 1}</span>
+              <span className="node-index">0{idx + 1}</span>
               <span className="node-title">
                 {d.title}
                 {d.ongoing && <span className="node-ongoing-badge">WIP</span>}
@@ -129,18 +129,20 @@ const ProjectDemo = () => {
           ))}
         </div>
 
-        {/* Right Side: Holographic Viewer Screen */}
+        {/* Right Side: Viewer Panel */}
         <div className="demo-viewer glass-panel">
-
-          <div className="bracket top-left"></div>
-          <div className="bracket top-right"></div>
-          <div className="bracket bottom-left"></div>
-          <div className="bracket bottom-right"></div>
 
           <div className={`viewer-content ${isFading ? 'fade-out' : 'fade-in'}`}>
 
             <div className="player-container">
-              <div className="scan-grid"></div>
+              {current.websiteUrl && (
+                <div className="browser-chrome">
+                  <span className="browser-chrome__dot browser-chrome__dot--red"></span>
+                  <span className="browser-chrome__dot browser-chrome__dot--yellow"></span>
+                  <span className="browser-chrome__dot browser-chrome__dot--green"></span>
+                  <span className="browser-chrome__url">{new URL(current.websiteUrl).hostname}</span>
+                </div>
+              )}
 
               {current.websiteUrl ? (
                 <iframe
@@ -161,8 +163,7 @@ const ProjectDemo = () => {
                 />
               ) : (
                 <div className="media-placeholder">
-                  <div className="placeholder-ring"></div>
-                  <span>AWAITING SIGNAL...</span>
+                  <span>Preview coming soon — see source instead</span>
                 </div>
               )}
             </div>

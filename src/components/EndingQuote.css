@@ -16,8 +16,8 @@
   transform: translateX(-50%);
   background: radial-gradient(
     circle,
-    rgba(0, 212, 255, 0.07),
-    rgba(168, 85, 247, 0.045),
+    rgba(240, 180, 41, 0.07),
+    rgba(245, 216, 144, 0.045),
     transparent 68%
   );
   filter: blur(18px);
@@ -57,7 +57,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 24px rgba(0, 212, 255, 0.08);
+  text-shadow: 0 0 24px rgba(240, 180, 41, 0.08);
 }
 
 .ending-quote-divider {
@@ -67,8 +67,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 212, 255, 0.75),
-    rgba(168, 85, 247, 0.65),
+    rgba(240, 180, 41, 0.75),
+    rgba(245, 216, 144, 0.65),
     transparent
   );
 }

@@ -10,158 +10,159 @@
   line-height: 1.75;
 }
 
-.projects-showcase {
+.projects-list {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 16px;
   margin-top: 50px;
 }
 
-/* ── Animated Project Datapad ── */
-.project-datapad {
+.project-item {
+  border-radius: 16px;
+}
+
+/* ── Collapsed Row (click to expand) ── */
+.project-row {
+  width: 100%;
   display: flex;
-  text-decoration: none;
+  align-items: center;
+  gap: 24px;
+  text-align: left;
+  font: inherit;
   color: inherit;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  min-height: 260px;
+  padding: 22px 28px;
+  border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--neon-cyan);
   background: linear-gradient(
     135deg,
     rgba(20, 20, 35, 0.62) 0%,
     rgba(10, 10, 20, 0.86) 100%
   );
   backdrop-filter: blur(15px);
-  transition:
-    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-    box-shadow 0.4s ease,
-    border-color 0.4s ease,
-    background 0.4s ease;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-/* Alternating border glow colors */
-.project-datapad:nth-child(odd) {
-  border-left: 4px solid var(--neon-cyan);
-}
-
-.project-datapad:nth-child(even) {
-  border-right: 4px solid var(--electric-purple);
-  flex-direction: row-reverse;
-}
-
-/* Hover animation */
-.project-datapad:hover {
-  transform: translateY(-7px);
-  border-color: rgba(255, 255, 255, 0.18);
+.project-row:hover,
+.project-row--open {
+  border-color: rgba(255, 255, 255, 0.14);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   background: linear-gradient(
     135deg,
     rgba(20, 24, 42, 0.82) 0%,
     rgba(10, 10, 20, 0.94) 100%
   );
-  box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.52),
-    0 0 24px rgba(0, 212, 255, 0.1);
-}
-
-.project-datapad:nth-child(odd):hover {
-  border-left-color: var(--neon-cyan);
-}
-
-.project-datapad:nth-child(even):hover {
-  border-right-color: var(--electric-purple);
-}
-
-/* ── Scanning Line Effect ── */
-.scan-effect {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.07),
-    transparent
-  );
-  transform: skewX(-20deg);
-  transition: left 0.75s ease;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.project-datapad:hover .scan-effect {
-  left: 150%;
-}
-
-/* ── Datapad Header ── */
-.datapad-header {
-  flex: 0.9;
-  padding: 34px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 2;
 }
 
 .project-index {
+  flex-shrink: 0;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   color: var(--text-secondary);
   opacity: 0.55;
-  margin-bottom: 10px;
   letter-spacing: 2px;
 }
 
+.project-row__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.project-row h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.project-row--open h3,
+.project-row:hover h3 {
+  color: var(--neon-cyan);
+}
+
 .project-tag {
+  display: block;
   width: fit-content;
-  margin-bottom: 18px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(0, 212, 255, 0.07);
-  border: 1px solid rgba(0, 212, 255, 0.16);
+  background: rgba(240, 180, 41, 0.07);
+  border: 1px solid rgba(240, 180, 41, 0.16);
   color: var(--neon-cyan);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition:
-    color 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease;
 }
 
-.project-datapad:nth-child(even) .project-tag {
-  background: rgba(168, 85, 247, 0.08);
-  border-color: rgba(168, 85, 247, 0.16);
-  color: var(--electric-purple);
+.project-row__meta {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.datapad-header h3 {
+.project-status {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34d399;
   font-family: var(--font-mono);
-  font-size: 1.85rem;
-  color: var(--text-primary);
-  margin: 0 0 22px;
-  line-height: 1.2;
-  transition:
-    color 0.3s ease,
-    text-shadow 0.3s ease,
-    transform 0.3s ease;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.project-datapad:hover .datapad-header h3 {
+.project-status--ongoing {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.project-row__chevron {
+  color: var(--text-secondary);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.project-row--open .project-row__chevron {
+  transform: rotate(180deg);
   color: var(--neon-cyan);
-  text-shadow: 0 0 14px rgba(0, 212, 255, 0.18);
-  transform: translateX(2px);
 }
 
-.project-datapad:nth-child(even):hover .datapad-header h3 {
-  color: var(--electric-purple);
-  text-shadow: 0 0 14px rgba(168, 85, 247, 0.2);
+/* ── Expanding Panel ── */
+.project-panel-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-panel-wrap.is-open {
+  grid-template-rows: 1fr;
+}
+
+.project-panel-inner {
+  overflow: hidden;
+}
+
+.project-panel {
+  padding: 28px 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: none;
+  border-left: 3px solid var(--neon-cyan);
+  border-radius: 0 0 16px 16px;
+  background: rgba(10, 10, 18, 0.6);
 }
 
 /* ── Tech Pills ── */
@@ -169,6 +170,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 24px;
 }
 
 .tech-pill {
@@ -180,141 +182,89 @@
   border-radius: 6px;
   color: var(--text-secondary);
   letter-spacing: 0.4px;
-  transition:
-    color 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.3s ease;
 }
 
-.project-datapad:hover .tech-pill {
-  transform: translateY(-1px);
-  border-color: rgba(0, 212, 255, 0.28);
+/* ── Info Grid (Problem / Built / Role / Impact) ── */
+.project-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 28px;
+}
+
+.project-card__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--neon-cyan);
-  background: rgba(0, 212, 255, 0.05);
 }
 
-.project-datapad:nth-child(even):hover .tech-pill {
-  border-color: rgba(168, 85, 247, 0.28);
-  color: var(--electric-purple);
-  background: rgba(168, 85, 247, 0.055);
-}
-
-/* ── Datapad Body ── */
-.datapad-body {
-  flex: 1.45;
-  padding: 34px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-}
-
-.datapad-bullets {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-.datapad-bullets li {
+.project-card__detail p {
   color: var(--text-secondary);
   font-size: 0.92rem;
   line-height: 1.62;
-  position: relative;
-  padding-left: 22px;
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
 }
 
-.datapad-bullets li::before {
-  content: "»";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--neon-cyan);
-  font-size: 1.2rem;
-  line-height: 1.4;
-  transition: color 0.3s ease;
-}
-
-.project-datapad:nth-child(even) .datapad-bullets li::before {
-  color: var(--electric-purple);
-}
-
-.project-datapad:hover .datapad-bullets li {
-  color: rgba(255, 255, 255, 0.78);
-  transform: translateX(2px);
-}
-
-/* ── Animated Status Indicator ── */
-.datapad-status {
-  margin-top: 25px;
-  display: flex;
+.project-panel__cta {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-top: 28px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: var(--neon-cyan);
+  color: var(--bg-color);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  opacity: 0.65;
-  letter-spacing: 1px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.status-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #10b981;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulse-dot 2s infinite;
-}
-
-.status-dot--ongoing {
-  background-color: #f59e0b;
-  box-shadow: 0 0 8px #f59e0b;
-}
-
-@keyframes pulse-dot {
-  0% {
-    opacity: 0.45;
-    transform: scale(0.9);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-
-  100% {
-    opacity: 0.45;
-    transform: scale(0.9);
-  }
+.project-panel__cta:hover {
+  background: var(--electric-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(240, 180, 41, 0.2);
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
-  .project-datapad,
-  .project-datapad:nth-child(even) {
-    flex-direction: column;
-    border-right: none;
-    border-left: 4px solid var(--neon-cyan);
+@media (max-width: 700px) {
+  .project-row {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 18px 20px;
   }
 
-  .project-datapad:nth-child(even):hover {
-    border-left-color: var(--electric-purple);
+  .project-row__main {
+    order: 2;
+    flex: 1 0 100%;
+    gap: 8px;
   }
 
-  .datapad-header,
-  .datapad-body {
-    padding: 25px;
+  .project-row h3 {
+    font-size: 1.3rem;
   }
 
-  .datapad-header h3 {
-    font-size: 1.5rem;
+  .project-row__meta {
+    order: 1;
+    margin-left: auto;
+  }
+
+  .project-panel {
+    padding: 22px 20px 24px;
+  }
+
+  .project-card__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .projects-intro {
@@ -323,36 +273,15 @@
 }
 
 @media (max-width: 480px) {
-  .projects-showcase {
-    gap: 28px;
+  .projects-list {
+    gap: 12px;
   }
 
-  .project-datapad {
-    min-height: auto;
-    border-radius: 16px;
-  }
-
-  .datapad-header,
-  .datapad-body {
-    padding: 22px;
-  }
-
-  .datapad-bullets li {
+  .project-card__detail p {
     font-size: 0.88rem;
   }
 
   .tech-pill {
     font-size: 0.68rem;
   }
-}
-
-.datapad-bullets li strong {
-  color: var(--neon-cyan);
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
-}
-
-.project-datapad:nth-child(even) .datapad-bullets li strong {
-  color: var(--electric-purple);
 }

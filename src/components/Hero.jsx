@@ -98,6 +98,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <a href="#about" className="hero-scroll-cue" aria-label="Scroll to About section">
+        <span className="hero-scroll-cue__label">Scroll</span>
+        <span className="hero-scroll-cue__line"></span>
+      </a>
     </section>
   );
 };

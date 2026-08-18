@@ -41,8 +41,7 @@
   flex-direction: column;
   gap: 5px;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  /* Futuristic cut corner shape */
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+  border-radius: 10px;
 }
 
 .node-index {
@@ -79,7 +78,7 @@
 /* Hover & Active States */
 .demo-node:hover {
   background: rgba(20, 20, 35, 0.8);
-  border-color: rgba(0, 212, 255, 0.2);
+  border-color: rgba(240, 180, 41, 0.2);
 }
 
 .demo-node:hover .node-title {
@@ -87,7 +86,7 @@
 }
 
 .demo-node.active {
-  background: rgba(0, 212, 255, 0.1);
+  background: rgba(240, 180, 41, 0.1);
   border-left: 4px solid var(--neon-cyan);
 }
 
@@ -101,7 +100,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), transparent);
+  background: linear-gradient(90deg, rgba(240, 180, 41, 0.2), transparent);
   animation: pulse-glow 2s infinite alternate;
 }
 
@@ -110,7 +109,7 @@
   100% { opacity: 1; }
 }
 
-/* ── Right Side: Holographic Viewer ── */
+/* ── Right Side: Viewer Panel ── */
 .demo-viewer {
   position: relative;
   padding: 30px;
@@ -118,25 +117,6 @@
   flex-direction: column;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(10, 10, 15, 0.8) 0%, rgba(20, 20, 30, 0.6) 100%);
-}
-
-/* Glowing Corner Brackets */
-.bracket {
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  border: 2px solid var(--neon-cyan);
-  transition: all 0.3s ease;
-}
-.bracket.top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-.bracket.top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
-.bracket.bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
-.bracket.bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
-
-.demo-viewer:hover .bracket {
-  width: 35px;
-  height: 35px;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
 }
 
 /* Fade Animations */
@@ -160,61 +140,62 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #050510;
+  background: var(--bg-color);
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Minimal browser-window chrome above embedded live sites */
+.browser-chrome {
+  flex: 0 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  background: #16161f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.browser-chrome__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.browser-chrome__dot--red { background: #f56b5f; }
+.browser-chrome__dot--yellow { background: #f5bd4f; }
+.browser-chrome__dot--green { background: #61c454; }
+
+.browser-chrome__url {
+  margin-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
 }
 
 .media-frame {
   width: 100%;
-  height: 100%;
+  flex: 1;
   border: none;
   background: #fff; /* White background for live sites */
-  position: relative;
-  z-index: 2;
-}
-
-/* Subtle holographic grid overlay over the player */
-.scan-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-  z-index: 3;
-  pointer-events: none; /* Let clicks pass through to iframe */
-  opacity: 0.5;
 }
 
 .media-placeholder {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: var(--neon-cyan);
+  padding: 0 20px;
+  color: var(--text-secondary);
   font-family: var(--font-mono);
-  letter-spacing: 2px;
-  opacity: 0.6;
-}
-
-.placeholder-ring {
-  width: 50px;
-  height: 50px;
-  border: 2px dashed var(--neon-cyan);
-  border-radius: 50%;
-  margin-bottom: 15px;
-  animation: spin-ring 4s linear infinite;
-}
-
-@keyframes spin-ring {
-  100% { transform: rotate(360deg); }
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 /* ── HUD Info Panel ── */
@@ -260,8 +241,8 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   padding: 4px 10px;
-  background: rgba(168, 85, 247, 0.1); /* purple tint */
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  background: rgba(245, 216, 144, 0.1);
+  border: 1px solid rgba(245, 216, 144, 0.3);
   border-radius: 4px;
   color: var(--text-primary);
 }
@@ -280,7 +261,7 @@
   align-items: center;
   justify-content: center;
   padding: 10px 24px;
-  background: rgba(0, 212, 255, 0.05);
+  background: rgba(240, 180, 41, 0.05);
   border: 1px solid var(--neon-cyan);
   color: var(--neon-cyan);
   font-family: var(--font-mono);
@@ -290,7 +271,7 @@
   text-decoration: none;
   transition: all 0.3s ease;
   overflow: hidden;
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  border-radius: 8px;
 }
 
 .btn-scanline {
@@ -307,7 +288,7 @@
 .hud-action-btn:hover {
   background: var(--neon-cyan);
   color: var(--bg-color);
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 15px rgba(240, 180, 41, 0.2);
 }
 
 .hud-action-btn:hover .btn-scanline {
@@ -329,7 +310,6 @@
 
   .demo-node {
     min-width: 180px;
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
   }
 
   /* Custom scrollbar for horizontal scrolling tabs */
@@ -346,5 +326,4 @@
   .demo-viewer {
     padding: 15px;
   }
-  .bracket { display: none; }
 }
