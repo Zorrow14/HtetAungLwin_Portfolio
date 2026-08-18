@@ -31,35 +31,61 @@ Tools & Deployment: Git, GitHub, Vercel, Vite, Figma, VS Code
 Htet prioritizes mastering backend fundamentals such as Node.js and Express.js before layering on frontend frameworks like React. He believes solid architecture produces scalable, robust apps rather than relying on surface aesthetics alone. His primary ecosystem is React, JavaScript, Node.js, Express.js, and MongoDB.
 
 == PROJECTS ==
-1. CineSearch
-   - Real-time movie search app exploring React 19 capabilities
-   - Integrated OMDb API with client-side filtering and dynamic debouncing
-   - Framer Motion for spring-based animations
-   - Tech: React 19, Vite, Tailwind CSS, OMDb API
-   - Live: https://movie-search-engine-ruddy.vercel.app/
+1. TimeSlot API
+   - Backend booking/reservation REST API where the core guarantee is that the same resource can never be double-booked, even under concurrent requests
+   - Closes the race two ways: a service-layer overlap check plus a PostgreSQL EXCLUDE constraint proven with an automated concurrency test
+   - Tech: FastAPI, PostgreSQL, JWT, Alembic
+   - Live API docs: https://timeslot-api.onrender.com/docs
+   - GitHub: https://github.com/Zorrow14/TimeSlot_API
 
-2. AuraGains
+2. CareerSync AI
+   - AI-powered Career OS with candidate, employer, and university portals: job-match scoring, skill-gap detection, AI roadmaps, mock interviews
+   - Built solo for the Talentbank Tech Hackathon 2026
+   - Tech: React, Vite, AI/UX Design
+   - Live: https://careersync-ai-careeros.vercel.app/
+   - GitHub: https://github.com/Zorrow14/careersync-ai
+
+3. MOCOF Chatbot
+   - Production client project: a serverless AI chatbot ("Moco") for a furniture/interior design business
+   - Composes curated knowledge-based prompts, calls Gemini, computes cabinetry price estimates in code, and verifies every price against real business data before replying to guard against hallucinated quotes
+   - Tech: Node.js, Vercel Functions, Gemini API, CI/CD
+   - Live: https://mocof-chatbot.vercel.app
+   - GitHub: https://github.com/Zorrow14/mocof-chatbot
+
+4. AuraGains
    - Native Android full-stack social fitness platform to combat gym anxiety
    - Custom workout protocol builders and rich media social feed with dynamic privacy logic
    - Flutter + Supabase using strict MVVM architecture
    - Tech: Flutter, Supabase, Dart, Provider
    - GitHub: https://github.com/lw112k/AuraGains
 
-3. EcoQuest Website
+5. EcoQuest Website
    - Core administrative infrastructure for a sustainability-focused web platform
    - Real-time admin dashboard and comprehensive user management system
    - Automated moderation log for community accountability
    - Tech: PHP, MySQL, JavaScript, HTML/CSS
    - GitHub: https://github.com/lw112k/EcoQuest
 
-4. Expense Management System
+6. Sprout
+   - Personal product: a local-first, installable habit-tracking PWA
+   - Habits are plants that softly wilt instead of hard-resetting on a missed day; includes a "Craving SOS" tool for quit-habits
+   - Tech: React, Vite, IndexedDB, PWA
+   - GitHub: https://github.com/Zorrow14/Sprout
+
+7. DevPilot (ONGOING — currently in active development, not finished)
+   - Full-stack developer growth platform: skill tracker, project planner, AI-generated learning roadmaps, internship-readiness score
+   - Tech: Next.js, Express.js, PostgreSQL, Prisma, Firebase Authentication
+   - GitHub: https://github.com/Zorrow14/DevPilot
+   - If asked about this project, be clear it is still being built and not yet complete.
+
+8. Expense Management System
    - Python CLI application for personal finance tracking
    - OOP architecture for expense categorization and report generation
    - Session persistence using JSON library
    - Tech: Python, JSON, Datetime API
    - GitHub: https://github.com/Zorrow14/Expense_Management_System_PY
 
-5. Education Management System
+9. Education Management System
    - Collaborative academic platform where Htet built the Student Portal module
    - Secure authentication, automated course enrolment, and grade-viewing interface
    - File-based database integration

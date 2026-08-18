@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import profileImg from '../assets/profile.svg';
 
 const Hero = () => {
   const [text, setText] = useState('');
@@ -96,33 +95,6 @@ const Hero = () => {
             </a>
 
             <a href="#contact" className="btn">Get In Touch</a>
-          </div>
-        </div>
-
-        <div className="hero-avatar-wrapper animate-on-scroll reveal-scale delay-2">
-          <div className="avatar-container">
-            <div className="avatar-ambient-glow"></div>
-            <div className="avatar-ring-outer"></div>
-            <div className="avatar-ring-inner"></div>
-            <div className="corner-accent top-left"></div>
-            <div className="corner-accent top-right"></div>
-            <div className="corner-accent bottom-left"></div>
-            <div className="corner-accent bottom-right"></div>
-
-            <div className="avatar-frame">
-              <img src={profileImg} alt="Htet Aung Lwin" className="avatar-image" />
-              <div className="avatar-scanline"></div>
-              <div className="avatar-mesh"></div>
-            </div>
-
-            <div className="hud-badge hud-top">
-              <span className="hud-dot"></span>
-              <span className="hud-text">AVAILABLE</span>
-            </div>
-
-            <div className="hud-badge hud-bottom">
-              <span className="hud-text">FULL STACK FOCUS</span>
-            </div>
           </div>
         </div>
       </div>

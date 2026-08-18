@@ -7,24 +7,34 @@ const ProjectDemo = () => {
 
   const demos = [
     {
-      title: "CineSearch",
-      label: "Live Movie Search Engine",
-      websiteUrl: "https://movie-search-engine-ruddy.vercel.app/",
+      title: "TimeSlot API",
+      label: "Concurrency-Safe Booking API",
+      websiteUrl: null,
+      youtubeId: "",
+      description: "Live interactive Swagger docs: try the booking endpoints directly and see the double-booking guard in action. First request may take ~50s to wake the free-tier instance.",
+      tech: ["FastAPI", "PostgreSQL", "JWT"],
+      actionLink: "https://timeslot-api.onrender.com/docs",
+      actionText: "VIEW LIVE API DOCS ↗︎"
+    },
+    {
+      title: "CareerSync AI",
+      label: "AI Career OS Platform",
+      websiteUrl: "https://careersync-ai-careeros.vercel.app/",
       youtubeId: null,
-      description: "Live embedded walkthrough: Test out the real-time search and debouncing instantly.",
-      tech: ["React 19", "OMDb API", "Framer Motion"],
-      actionLink: "https://movie-search-engine-ruddy.vercel.app/",
-      actionText: "LAUNCH LIVE SITE ↗\uFE0E"
+      description: "Live embedded walkthrough: explore the candidate, employer, and university portals, built for the Talentbank Tech Hackathon 2026.",
+      tech: ["React", "Vite", "AI/UX Design"],
+      actionLink: "https://careersync-ai-careeros.vercel.app/",
+      actionText: "LAUNCH LIVE SITE ↗︎"
     },
     {
       title: "AuraGains",
       label: "Social Fitness Platform",
-      youtubeId: "", 
+      youtubeId: "",
       websiteUrl: null,
       description: "Preview the strict MVVM architecture and native Android hardware integrations.",
       tech: ["Flutter", "Supabase", "Dart"],
       actionLink: "https://drive.google.com/file/d/1E50Fhlve2BRHRDJg31YR2uwuzjz6tqAp/view?usp=drive_link", // <-- PUT YOUR GOOGLE DRIVE LINK HERE
-      actionText: "DOWNLOAD APK ↓\uFE0E"
+      actionText: "DOWNLOAD APK ↓︎"
     },
     {
       title: "EcoQuest",
@@ -34,7 +44,28 @@ const ProjectDemo = () => {
       description: "Dashboard overview, user management flow, and the automated moderation log.",
       tech: ["PHP", "MySQL", "JavaScript"],
       actionLink: "https://github.com/lw112k/EcoQuest",
-      actionText: "VIEW SOURCE ↗\uFE0E"
+      actionText: "VIEW SOURCE ↗︎"
+    },
+    {
+      title: "Sprout",
+      label: "Habit Tracker PWA",
+      youtubeId: "",
+      websiteUrl: null,
+      description: "Source walkthrough: a local-first habit garden with a compassionate 'soft wilt' streak model and a Craving SOS tool.",
+      tech: ["React", "Vite", "IndexedDB"],
+      actionLink: "https://github.com/Zorrow14/Sprout",
+      actionText: "VIEW SOURCE ↗︎"
+    },
+    {
+      title: "DevPilot",
+      label: "Ongoing — AI Roadmap Platform",
+      youtubeId: "",
+      websiteUrl: null,
+      description: "Actively in development: a full-stack skill tracker, project planner, and AI roadmap generator for junior developers.",
+      tech: ["Next.js", "Express.js", "Prisma"],
+      actionLink: "https://github.com/Zorrow14/DevPilot",
+      actionText: "VIEW SOURCE (ONGOING) ↗︎",
+      ongoing: true
     },
     {
       title: "Expense Manager",
@@ -44,7 +75,7 @@ const ProjectDemo = () => {
       description: "CLI walkthrough: adding, categorising, and exporting transactions with JSON persistence.",
       tech: ["Python", "JSON"],
       actionLink: "https://github.com/Zorrow14/Expense_Management_System_PY",
-      actionText: "VIEW SOURCE ↗\uFE0E"
+      actionText: "VIEW SOURCE ↗︎"
     },
     {
       title: "EduManage",
@@ -54,7 +85,7 @@ const ProjectDemo = () => {
       description: "Auth flow, grade viewing, and the collaborative academic dashboard in action.",
       tech: ["Python"],
       actionLink: "https://github.com/lw112k/Education-Management-System-PY",
-      actionText: "VIEW SOURCE ↗\uFE0E"
+      actionText: "VIEW SOURCE ↗︎"
     }
   ];
 
@@ -79,7 +110,7 @@ const ProjectDemo = () => {
       </div>
 
       <div className="demo-command-deck">
-        
+
         {/* Left Side: Futuristic Selector Panel */}
         <div className="demo-selector">
           {demos.map((d, idx) => (
@@ -90,21 +121,24 @@ const ProjectDemo = () => {
             >
               <div className="node-glow"></div>
               <span className="node-index">SYS_0{idx + 1}</span>
-              <span className="node-title">{d.title}</span>
+              <span className="node-title">
+                {d.title}
+                {d.ongoing && <span className="node-ongoing-badge">WIP</span>}
+              </span>
             </button>
           ))}
         </div>
 
         {/* Right Side: Holographic Viewer Screen */}
         <div className="demo-viewer glass-panel">
-          
+
           <div className="bracket top-left"></div>
           <div className="bracket top-right"></div>
           <div className="bracket bottom-left"></div>
           <div className="bracket bottom-right"></div>
 
           <div className={`viewer-content ${isFading ? 'fade-out' : 'fade-in'}`}>
-            
+
             <div className="player-container">
               <div className="scan-grid"></div>
 
@@ -140,7 +174,7 @@ const ProjectDemo = () => {
                 <h3 className="hud-title">{current.title}</h3>
               </div>
               <p className="hud-description">{current.description}</p>
-              
+
               <div className="hud-tech">
                 {current.tech.map((t, i) => (
                   <span key={i} className="hud-tech-pill">{t}</span>
@@ -150,10 +184,10 @@ const ProjectDemo = () => {
               {/* NEW: Action Button Array */}
               {current.actionLink && (
                 <div className="hud-action-wrapper">
-                  <a 
-                    href={current.actionLink} 
-                    target="_blank" 
-                    rel="noreferrer" 
+                  <a
+                    href={current.actionLink}
+                    target="_blank"
+                    rel="noreferrer"
                     className="hud-action-btn"
                   >
                     <span className="btn-scanline"></span>

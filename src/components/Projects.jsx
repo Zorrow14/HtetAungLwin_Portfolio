@@ -4,28 +4,76 @@ import './Projects.css';
 const Projects = () => {
   const projectData = [
     {
-      title: 'CineSearch',
-      tag: 'Featured Frontend Project',
+      title: 'TimeSlot API',
+      tag: 'Backend / API Project',
       details: [
         {
           label: 'Problem',
-          text: 'Users need a fast and simple way to search movies without slow page reloads or cluttered browsing.',
+          text: 'Naive booking systems check "is this slot free?" then insert — a gap where two requests racing at the same instant can both succeed and double-book the same resource.',
         },
         {
           label: 'Built',
-          text: 'A real-time movie search application using React, Vite, and the OMDb API with debounced search and clean result rendering.',
+          text: 'A FastAPI + PostgreSQL booking API with JWT auth that closes the race two ways: a service-layer overlap check for clean rejections, plus a PostgreSQL EXCLUDE constraint that guarantees no two confirmed bookings can ever overlap, even under concurrent writes.',
         },
         {
           label: 'My Role',
-          text: 'Handled the frontend logic, API integration, responsive UI layout, and smooth interaction flow.',
+          text: 'Designed the booking data model, wrote the exclusion-constraint migration, built the automated concurrency test proving the race is closed, and set up CI.',
         },
         {
           label: 'Impact',
-          text: 'Shows my ability to build polished React interfaces, work with external APIs, and create user-friendly search experiences.',
+          text: 'Demonstrates backend fundamentals beyond CRUD — database-level correctness guarantees, race-condition testing, and a production-style API with interactive docs.',
         },
       ],
-      tech: ['React 19', 'Vite', 'Tailwind CSS', 'OMDb API'],
-      link: 'https://movie-search-engine-ruddy.vercel.app/',
+      tech: ['FastAPI', 'PostgreSQL', 'JWT', 'Alembic'],
+      link: 'https://timeslot-api.onrender.com/docs',
+    },
+    {
+      title: 'CareerSync AI',
+      tag: 'AI Hackathon Project',
+      details: [
+        {
+          label: 'Problem',
+          text: 'Students and fresh graduates struggle to see clearly how their skills match real job requirements, or what concrete steps close the gap.',
+        },
+        {
+          label: 'Built',
+          text: 'A three-sided AI-powered Career OS — candidate, employer, and university portals — with explainable job-match scoring, skill-gap detection, AI-generated roadmaps, and mock interviews, built for the Talentbank Tech Hackathon 2026.',
+        },
+        {
+          label: 'My Role',
+          text: 'Built the React frontend, the simulated AI-response layer, and the full role-based portal architecture solo, under a hackathon deadline.',
+        },
+        {
+          label: 'Impact',
+          text: 'Shows product thinking under time pressure, multi-persona UX design, and the ability to ship a demo-ready full experience alone.',
+        },
+      ],
+      tech: ['React', 'Vite', 'AI/UX Design'],
+      link: 'https://careersync-ai-careeros.vercel.app/',
+    },
+    {
+      title: 'MOCOF Chatbot',
+      tag: 'Client / Freelance Project',
+      details: [
+        {
+          label: 'Problem',
+          text: 'A furniture and interior design business needed an always-on assistant that could answer product questions and quote custom cabinetry prices — without ever misquoting a customer.',
+        },
+        {
+          label: 'Built',
+          text: 'A production, Vercel-hosted chatbot ("Moco") that assembles a curated knowledge-based system prompt, calls the Gemini API for responses, computes cabinetry price estimates in code, and verifies every price the model outputs against real business data before it reaches a customer.',
+        },
+        {
+          label: 'My Role',
+          text: 'Built the serverless backend, the knowledge-routing system, the price-hallucination guardrail, and the CI pipeline end-to-end for a real paying client.',
+        },
+        {
+          label: 'Impact',
+          text: 'Real production client work — shows I can ship a reliable, tested AI product with safety guardrails, not just a demo.',
+        },
+      ],
+      tech: ['Node.js', 'Vercel Functions', 'Gemini API', 'CI/CD'],
+      link: 'https://mocof-chatbot.vercel.app',
     },
     {
       title: 'AuraGains',
@@ -74,6 +122,55 @@ const Projects = () => {
       ],
       tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
       link: 'https://github.com/lw112k/EcoQuest',
+    },
+    {
+      title: 'Sprout',
+      tag: 'Personal Product / PWA',
+      details: [
+        {
+          label: 'Problem',
+          text: 'Streak-based habit trackers punish a single missed day with a hard reset, which discourages people from returning after a slip instead of helping them recover.',
+        },
+        {
+          label: 'Built',
+          text: 'A local-first, installable habit-tracking PWA where habits are plants that softly wilt instead of resetting, plus a dedicated "Craving SOS" tool with a breathing pacer and trigger logging for quit-habits.',
+        },
+        {
+          label: 'My Role',
+          text: 'Designed and built the full app solo — the data model, on-device IndexedDB persistence, PWA install flow, and the SOS/insights features.',
+        },
+        {
+          label: 'Impact',
+          text: 'Shows independent product design: spotting a real UX flaw in an existing app category and building a more compassionate alternative.',
+        },
+      ],
+      tech: ['React', 'Vite', 'IndexedDB', 'PWA'],
+      link: 'https://github.com/Zorrow14/Sprout',
+    },
+    {
+      title: 'DevPilot',
+      tag: 'Ongoing — Full Stack Platform',
+      ongoing: true,
+      details: [
+        {
+          label: 'Problem',
+          text: 'Students and junior developers track their learning across scattered tutorials, roadmaps, and side projects, with no single system to show real progress.',
+        },
+        {
+          label: 'Building',
+          text: 'A full-stack SaaS-style platform — skill tracker, project planner, AI-generated learning roadmaps, and an internship-readiness score — using Next.js, Express.js, PostgreSQL, Prisma, and Firebase Authentication.',
+        },
+        {
+          label: 'My Role',
+          text: 'Architecting and building the full stack solo, including the Firebase/PostgreSQL auth bridge and the admin monitoring dashboard.',
+        },
+        {
+          label: 'Status',
+          text: 'Currently in active development — included here to show how Htet plans and builds a multi-service SaaS architecture end-to-end, not just finished demos.',
+        },
+      ],
+      tech: ['Next.js', 'Express.js', 'PostgreSQL', 'Prisma'],
+      link: 'https://github.com/Zorrow14/DevPilot',
     },
     {
       title: 'Expense Management System',
@@ -175,8 +272,8 @@ const Projects = () => {
               </ul>
 
               <div className="datapad-status">
-                <span className="status-dot"></span>
-                <span>PROJECT READY</span>
+                <span className={`status-dot ${project.ongoing ? 'status-dot--ongoing' : ''}`}></span>
+                <span>{project.ongoing ? 'IN DEVELOPMENT' : 'PROJECT READY'}</span>
               </div>
             </div>
           </a>
