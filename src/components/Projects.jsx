@@ -15,10 +15,6 @@ const projectData = [
         text: 'A FastAPI + PostgreSQL booking API with JWT auth that closes the race two ways: a service-layer overlap check for clean rejections, plus a PostgreSQL EXCLUDE constraint that guarantees no two confirmed bookings can ever overlap, even under concurrent writes.',
       },
       {
-        label: 'My Role',
-        text: 'Designed the booking data model, wrote the exclusion-constraint migration, built the automated concurrency test proving the race is closed, and set up CI.',
-      },
-      {
         label: 'Impact',
         text: 'Demonstrates backend fundamentals beyond CRUD — database-level correctness guarantees, race-condition testing, and a production-style API with interactive docs.',
       },
@@ -39,10 +35,6 @@ const projectData = [
         text: 'A three-sided AI-powered Career OS — candidate, employer, and university portals — with explainable job-match scoring, skill-gap detection, AI-generated roadmaps, and mock interviews, built for the Talentbank Tech Hackathon 2026.',
       },
       {
-        label: 'My Role',
-        text: 'Built the React frontend, the simulated AI-response layer, and the full role-based portal architecture solo, under a hackathon deadline.',
-      },
-      {
         label: 'Impact',
         text: 'Shows product thinking under time pressure, multi-persona UX design, and the ability to ship a demo-ready full experience alone.',
       },
@@ -52,7 +44,7 @@ const projectData = [
   },
   {
     title: 'MOCOF Chatbot',
-    tag: 'Client / Freelance Project',
+    tag: 'Internship Project',
     details: [
       {
         label: 'Problem',
@@ -63,12 +55,8 @@ const projectData = [
         text: 'A production, Vercel-hosted chatbot ("Moco") that assembles a curated knowledge-based system prompt, calls the Gemini API for responses, computes cabinetry price estimates in code, and verifies every price the model outputs against real business data before it reaches a customer.',
       },
       {
-        label: 'My Role',
-        text: 'Built the serverless backend, the knowledge-routing system, the price-hallucination guardrail, and the CI pipeline end-to-end for a real paying client.',
-      },
-      {
         label: 'Impact',
-        text: 'Real production client work — shows I can ship a reliable, tested AI product with safety guardrails, not just a demo.',
+        text: 'Real production client work delivered during an internship — shows I can ship a reliable, tested AI product with safety guardrails, not just a demo.',
       },
     ],
     tech: ['Node.js', 'Vercel Functions', 'Gemini API', 'CI/CD'],
@@ -85,10 +73,6 @@ const projectData = [
       {
         label: 'Built',
         text: 'A native Android social fitness platform with workout builders, rich media posts, privacy logic, challenges, and expert verification.',
-      },
-      {
-        label: 'My Role',
-        text: 'Worked within a Flutter and Supabase architecture, contributing to application logic, data flow, and feature implementation using MVVM principles.',
       },
       {
         label: 'Impact',
@@ -111,10 +95,6 @@ const projectData = [
         text: 'Administrative infrastructure for a sustainability-focused web platform, including dashboard features and user management.',
       },
       {
-        label: 'My Role',
-        text: 'Built admin-facing features, moderation logging, and database-connected management workflows.',
-      },
-      {
         label: 'Impact',
         text: 'Highlights my ability to work with backend-connected web systems, CRUD logic, and practical admin functionality.',
       },
@@ -133,10 +113,6 @@ const projectData = [
       {
         label: 'Built',
         text: 'A local-first, installable habit-tracking PWA where habits are plants that softly wilt instead of resetting, plus a dedicated "Craving SOS" tool with a breathing pacer and trigger logging for quit-habits.',
-      },
-      {
-        label: 'My Role',
-        text: 'Designed and built the full app solo — the data model, on-device IndexedDB persistence, PWA install flow, and the SOS/insights features.',
       },
       {
         label: 'Impact',
@@ -160,64 +136,12 @@ const projectData = [
         text: 'A full-stack SaaS-style platform — skill tracker, project planner, AI-generated learning roadmaps, and an internship-readiness score — using Next.js, Express.js, PostgreSQL, Prisma, and Firebase Authentication.',
       },
       {
-        label: 'My Role',
-        text: 'Architecting and building the full stack solo, including the Firebase/PostgreSQL auth bridge and the admin monitoring dashboard.',
-      },
-      {
         label: 'Status',
         text: 'Currently in active development — included here to show how Htet plans and builds a multi-service SaaS architecture end-to-end, not just finished demos.',
       },
     ],
     tech: ['Next.js', 'Express.js', 'PostgreSQL', 'Prisma'],
     link: 'https://github.com/Zorrow14/DevPilot',
-  },
-  {
-    title: 'Expense Management System',
-    tag: 'Python CLI Project',
-    details: [
-      {
-        label: 'Problem',
-        text: 'Personal spending can become difficult to track without a simple way to categorize expenses and review historical records.',
-      },
-      {
-        label: 'Built',
-        text: 'A Python command-line application for expense tracking, categorization, reporting, and persistent JSON-based storage.',
-      },
-      {
-        label: 'My Role',
-        text: 'Designed the object-oriented structure, handled data persistence, and implemented core finance-tracking logic.',
-      },
-      {
-        label: 'Impact',
-        text: 'Shows strong programming fundamentals, structured thinking, and practical use of Python for real problem solving.',
-      },
-    ],
-    tech: ['Python', 'JSON', 'Datetime API'],
-    link: 'https://github.com/Zorrow14/Expense_Management_System_PY',
-  },
-  {
-    title: 'Education Management System',
-    tag: 'Academic System Project',
-    details: [
-      {
-        label: 'Problem',
-        text: 'Academic platforms require secure student access, course enrolment, and organized grade viewing.',
-      },
-      {
-        label: 'Built',
-        text: 'Contributed to an education management system by developing the Student Portal module.',
-      },
-      {
-        label: 'My Role',
-        text: 'Implemented authentication, course enrolment logic, grade viewing, and file-based data integration.',
-      },
-      {
-        label: 'Impact',
-        text: 'Demonstrates ability to build structured application modules and collaborate on multi-feature academic systems.',
-      },
-    ],
-    tech: ['Python'],
-    link: 'https://github.com/lw112k/Education-Management-System-PY',
   },
 ];
 

@@ -187,9 +187,9 @@ const Contact = () => {
       </h2>
 
       <p className="contact-intro">
-        I am seeking Software Development internship opportunities and always enjoy
-        discussing software engineering, system design, web technologies, and building
-        practical applications over a quiet coffee.
+        I'm always open to connecting — whether it's about collaboration opportunities,
+        or just discussing software engineering, system design, web technologies, and
+        building practical applications over a quiet coffee.
       </p>
 
       <div className="contact-chatbot-nudge animate-on-scroll reveal-up delay-1">

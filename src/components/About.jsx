@@ -63,20 +63,21 @@ const About = () => {
           <p>
             I’m a final-semester Diploma in Software Engineering student at Asia Pacific University in Kuala Lumpur,
             with a strong focus on Full Stack Development. My journey in technology is driven by a desire
-            to build functional, clean, and highly responsive web applications that solve real problems across
+            to build functional, clean, and highly responsive applications that solve real problems across
             various industries.
           </p>
           <p>
-            In my technical approach, I prioritize a deep understanding of core mechanics. I firmly believe
-            in mastering backend fundamentals—particularly with Node.js and Express.js—before scaling up to
-            frontend frameworks like React. This philosophy ensures that the applications I build are
-            supported by robust, scalable architectures rather than relying purely on surface-level aesthetics.
-            My primary ecosystem revolves around React, JavaScript, Node.js, Express.js, and MongoDB.
+            In my technical approach, I prioritize a deep understanding of core mechanics over any single
+            framework. I’ve shipped production work across JavaScript/TypeScript, Python, and Java — from a
+            FastAPI + PostgreSQL booking service with database-level concurrency guarantees, to React and
+            Next.js frontends, to a Flutter mobile app, to serverless AI chatbots built on the Gemini and
+            Groq APIs. That range lets me pick the right tool for the problem instead of forcing every
+            project through the same stack.
           </p>
           <p>
-            As I approach the conclusion of my diploma, I am actively seeking an internship opportunity as a React
-            or Full Stack Developer. I am eager to contribute to meaningful projects, refine my engineering
-            practices, and continue growing alongside a dedicated team.
+            I’m currently working as a Software Development Intern, contributing to production work
+            such as the MOCOF Chatbot project below. Alongside that, I continue building and shipping
+            my own projects, refining my engineering practices, and growing as a well-rounded developer.
           </p>
 
           {/* Distinct Sections Grid */}
@@ -91,7 +92,7 @@ const About = () => {
             <div className="detail-box animate-on-scroll reveal-up delay-3">
               <h3>Core Focus</h3>
               <p><strong>Full Stack Development</strong></p>
-              <p>React Ecosystem & Node.js</p>
+              <p>Web, Mobile & AI-backed Systems</p>
               <p className="date">Frontend & Backend</p>
             </div>
           </div>

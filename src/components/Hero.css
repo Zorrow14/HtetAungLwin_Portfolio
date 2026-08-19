@@ -28,15 +28,67 @@
 
 .hero-grid {
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 60px;
   width: 100%;
 }
 
 .hero-text-content {
-  max-width: 820px;
+  max-width: 680px;
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* --- Hero Portrait --- */
+.hero-photo-wrapper {
+  position: relative;
+  flex: 0 0 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-photo-frame {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(240, 180, 41, 0.35);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 50px rgba(240, 180, 41, 0.15);
+  z-index: 1;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.92);
+}
+
+.hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(240, 180, 41, 0.18), rgba(245, 216, 144, 0.12));
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.hero-photo-ring {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(240, 180, 41, 0.2);
+  animation: hero-ring-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hero-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.9; }
 }
 
 .greeting {
@@ -72,32 +124,24 @@
   line-height: 1.8;
 }
 
-/* --- Internship Availability Card --- */
-.hero-internship-card {
+/* --- Current Status Card --- */
+.hero-status-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   max-width: 660px;
-  margin: 0 0 34px;
-  padding: 16px 18px;
-  border-radius: 16px;
+  width: fit-content;
+  margin: 0 0 30px;
+  padding: 12px 18px;
+  border-radius: 999px;
   background: rgba(15, 23, 42, 0.72);
   border: 1px solid rgba(240, 180, 41, 0.18);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(10px);
 }
 
-.hero-internship-card__top {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 14px;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: var(--neon-cyan);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.hero-internship-card__dot {
+.hero-status-card__dot {
+  flex-shrink: 0;
   width: 8px;
   height: 8px;
   border-radius: 999px;
@@ -105,24 +149,16 @@
   box-shadow: 0 0 10px rgba(34, 197, 94, 0.75);
 }
 
-.hero-internship-card__content {
-  display: grid;
-  grid-template-columns: 1.4fr 1.2fr 1fr;
-  gap: 14px;
-}
-
-.hero-internship-card__content small {
-  display: block;
-  margin-bottom: 5px;
+.hero-status-card__text {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
   color: var(--text-secondary);
-  font-size: 0.72rem;
+  line-height: 1.4;
 }
 
-.hero-internship-card__content strong {
-  display: block;
+.hero-status-card__text strong {
   color: var(--text-primary);
-  font-size: 0.84rem;
-  line-height: 1.4;
+  font-weight: 600;
 }
 
 .cta-buttons {
@@ -131,16 +167,11 @@
 }
 
 /* --- RESPONSIVE MEDIA QUERIES --- */
-@media (max-width: 1024px) {
-  .hero-internship-card__content {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-}
-
 @media (max-width: 900px) {
   .hero-grid {
+    flex-direction: column-reverse;
     text-align: center;
+    gap: 36px;
   }
 
   .hero-text-content {
@@ -152,20 +183,18 @@
     margin-right: auto;
   }
 
-  .hero-internship-card {
-    width: 100%;
-  }
-
-  .hero-internship-card__top {
-    justify-content: center;
-  }
-
-  .hero-internship-card__content {
-    text-align: center;
-  }
-
   .cta-buttons {
     justify-content: center;
+  }
+
+  .hero-photo-frame {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-photo-ring {
+    width: 254px;
+    height: 254px;
   }
 }
 
@@ -178,17 +207,14 @@
     font-size: 1.1rem;
   }
 
-  .hero-internship-card {
-    padding: 15px;
-    margin-bottom: 28px;
+  .hero-photo-frame {
+    width: 180px;
+    height: 180px;
   }
 
-  .hero-internship-card__top {
-    font-size: 0.7rem;
-  }
-
-  .hero-internship-card__content strong {
-    font-size: 0.8rem;
+  .hero-photo-ring {
+    width: 210px;
+    height: 210px;
   }
 }
 

@@ -10,201 +10,46 @@
   letter-spacing: 0.02em;
 }
 
-/* ── Circuit Layout (No Cards) ── */
-.skills-circuit {
-  display: flex;
-  flex-direction: column;
+/* ── Category Boxes ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
   margin-top: 50px;
-  padding-left: 10px;
 }
 
-.circuit-branch {
-  display: flex;
-  gap: 35px;
-  position: relative;
+.skill-box {
+  padding: 28px;
+  border-radius: 16px;
 }
 
-/* ── Vertical Glowing Line & Nodes ── */
-.branch-connector {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 20px;
-  flex-shrink: 0;
-}
-
-.branch-node {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--bg-color);
-  border: 3px solid var(--neon-cyan);
-  box-shadow: 0 0 12px var(--neon-cyan);
-  z-index: 2;
-  margin-top: 6px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.branch-node--active {
-  box-shadow: 0 0 20px var(--neon-cyan), 0 0 34px rgba(240, 180, 41, 0.4);
-  transform: scale(1.15);
-}
-
-.branch-line {
-  flex: 1;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--neon-cyan), rgba(240, 180, 41, 0.1) 80%);
-  min-height: 80px;
-}
-
-/* Hide the tailing line on the very last item */
-.circuit-branch:last-child .branch-line {
-  display: none;
-}
-
-/* ── Content & Typography ── */
-.branch-content {
-  flex: 1;
-  padding-bottom: 60px; /* Space before the next category starts */
-}
-
-/* Category title — click to bring its skills into orbit */
-.branch-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
-  padding: 0;
-  background: none;
-  border: none;
+.skill-box__title {
   font-family: var(--font-mono);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   color: var(--text-primary);
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  letter-spacing: 0.3px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.branch-title:hover,
-.branch-title--active {
-  color: var(--neon-cyan);
-}
-
-.branch-title__icon {
-  color: var(--text-secondary);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
-}
-
-.branch-title--active .branch-title__icon {
-  transform: rotate(180deg);
-  color: var(--neon-cyan);
-}
-
-/* ── Wrap that hosts both the flex row and the orbit overlay ── */
-.branch-skills-wrap {
-  position: relative;
-  transition: min-height 0.4s ease;
-}
-
-.branch-skills-wrap.is-orbiting {
-  min-height: 420px;
-}
-
-.branch-skills {
+.skill-box__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  transition: opacity 0.3s ease;
+  gap: 14px;
 }
 
-.branch-skills-wrap.is-orbiting .branch-skills {
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-/* ── Orbit Layer: skills arranged in a circle around the title ── */
-.orbit-layer {
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
-.orbit-node {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 76px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  pointer-events: auto;
-  transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
-  animation: orbit-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
-.orbit-node__icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: rgba(12, 12, 24, 0.92);
-  border: 1px solid rgba(240, 180, 41, 0.35);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 14px rgba(240, 180, 41, 0.12);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.orbit-node__icon img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-}
-
-.orbit-node__label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  line-height: 1.25;
-  text-align: center;
-  color: var(--text-secondary);
-  transition: color 0.25s ease;
-}
-
-.orbit-node:hover .orbit-node__icon {
-  border-color: var(--neon-cyan);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 18px rgba(240, 180, 41, 0.25);
-  transform: scale(1.08);
-}
-
-.orbit-node:hover .orbit-node__label {
-  color: var(--text-primary);
-}
-
-@keyframes orbit-in {
-  from {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
-    opacity: 1;
-  }
-}
-
-/* ── Fancy Interactive Holographic Pills (collapsed row) ── */
+/* ── Skill Pills ── */
 .skill-pill {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: 12px 24px;
+  padding: 10px 18px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   cursor: default;
   position: relative;
@@ -212,7 +57,6 @@
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* The light-sweep animation overlay */
 .skill-pill::before {
   content: '';
   position: absolute;
@@ -228,23 +72,22 @@
 .skill-pill:hover {
   border-color: var(--neon-cyan);
   color: var(--text-primary);
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(240, 180, 41, 0.15), inset 0 0 10px rgba(240, 180, 41, 0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(240, 180, 41, 0.15), inset 0 0 10px rgba(240, 180, 41, 0.05);
 }
 
 .skill-pill:hover::before {
   left: 100%;
 }
 
-/* Keep text and icon above the light sweep */
 .skill-name, .skill-icon {
   z-index: 2;
   position: relative;
 }
 
 .skill-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   flex-shrink: 0;
@@ -254,47 +97,28 @@
   transform: scale(1.15) rotate(5deg);
 }
 
-/* ── Responsive Adjustments ── */
-@media (max-width: 700px) {
-  /* Orbit math assumes generous width; fall back to a simple wrapped
-     reveal on narrow screens instead of overlapping pills. */
-  .branch-skills-wrap.is-orbiting {
-    min-height: 0;
-  }
-
-  .branch-skills-wrap.is-orbiting .branch-skills {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .orbit-layer {
-    display: none;
-  }
-}
-
+/* ── Responsive ── */
 @media (max-width: 600px) {
-  .circuit-branch {
-    gap: 20px;
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
-  .branch-node {
-    width: 14px;
-    height: 14px;
-    margin-top: 8px;
+  .skill-box {
+    padding: 22px 20px;
   }
 
-  .branch-title {
-    font-size: 1.2rem;
-    margin-bottom: 18px;
+  .skill-box__title {
+    font-size: 1.05rem;
   }
 
   .skill-pill {
-    padding: 10px 18px;
-    font-size: 0.85rem;
+    padding: 9px 15px;
+    font-size: 0.82rem;
   }
 
   .skill-icon {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
   }
 }

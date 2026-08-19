@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import './Skills.css';
 
 const skillCategories = [
@@ -52,134 +52,25 @@ const skillCategories = [
 ];
 
 const Skills = () => {
-  const [openIdx, setOpenIdx] = useState(null);
-  const [orbitCenter, setOrbitCenter] = useState({ x: 0, y: 0 });
-  const titleRefs = useRef([]);
-  const wrapRefs = useRef([]);
-
-  const toggleOrbit = (idx) => {
-    if (openIdx === idx) {
-      setOpenIdx(null);
-      return;
-    }
-
-    const titleEl = titleRefs.current[idx];
-    const wrapEl = wrapRefs.current[idx];
-
-    if (titleEl && wrapEl) {
-      const titleRect = titleEl.getBoundingClientRect();
-      const wrapRect = wrapEl.getBoundingClientRect();
-      setOrbitCenter({
-        x: titleRect.left - wrapRect.left + titleRect.width / 2,
-        y: titleRect.top - wrapRect.top + titleRect.height / 2,
-      });
-    }
-
-    setOpenIdx(idx);
-  };
-
   return (
     <section id="skills" className="skills-section animate-on-scroll reveal-up">
       <h2 className="section-title"><span className="gradient-text">02.</span> Skills</h2>
-      <p className="skills-intro">Click a category to bring its skills into orbit.</p>
+      <p className="skills-intro">A breakdown of the languages, frameworks, and tools I work with.</p>
 
-      <div className="skills-circuit">
-        {skillCategories.map((category, idx) => {
-          const isOpen = openIdx === idx;
-          const count = category.skills.length;
-
-          return (
-            <div key={idx} className={`circuit-branch animate-on-scroll reveal-left delay-${(idx % 3) + 1}`}>
-
-              {/* The Glowing Connection Line */}
-              <div className="branch-connector">
-                <div className={`branch-node ${isOpen ? 'branch-node--active' : ''}`}></div>
-                <div className="branch-line"></div>
-              </div>
-
-              {/* The Content */}
-              <div className="branch-content">
-                <button
-                  type="button"
-                  ref={(el) => (titleRefs.current[idx] = el)}
-                  className={`branch-title ${isOpen ? 'branch-title--active' : ''}`}
-                  onClick={() => toggleOrbit(idx)}
-                  aria-expanded={isOpen}
-                >
-                  {category.title}
-                  <svg
-                    className="branch-title__icon"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </button>
-
-                <div
-                  ref={(el) => (wrapRefs.current[idx] = el)}
-                  className={`branch-skills-wrap ${isOpen ? 'is-orbiting' : ''}`}
-                >
-                  <div className="branch-skills" aria-hidden={isOpen}>
-                    {category.skills.map((skill, sIdx) => (
-                      <div
-                        key={sIdx}
-                        className="skill-pill animate-on-scroll reveal-scale"
-                        style={{ transitionDelay: `${sIdx * 0.06}s` }}
-                      >
-                        {skill.icon && <img src={skill.icon} alt={`${skill.name} icon`} className="skill-icon" />}
-                        <span className="skill-name">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {isOpen && (
-                    <div
-                      className="orbit-layer"
-                      style={{ left: `${orbitCenter.x}px`, top: `${orbitCenter.y}px` }}
-                    >
-                      {category.skills.map((skill, sIdx) => {
-                        // Arc spans 30deg to 150deg (opening downward, staying clear
-                        // of the title's own line), so nodes fan below/beside the
-                        // title without covering it or reaching into the category above.
-                        const angle = count === 1 ? 90 : 30 + (120 / (count - 1)) * sIdx;
-                        const rad = (angle * Math.PI) / 180;
-                        const radius = count <= 3 ? 120 : count <= 5 ? 165 : 210;
-                        const x = Math.cos(rad) * radius;
-                        const y = Math.sin(rad) * radius;
-
-                        return (
-                          <div
-                            key={sIdx}
-                            className="orbit-node"
-                            style={{
-                              '--x': `${x}px`,
-                              '--y': `${y}px`,
-                              animationDelay: `${sIdx * 0.04}s`,
-                            }}
-                          >
-                            <span className="orbit-node__icon">
-                              {skill.icon && <img src={skill.icon} alt="" />}
-                            </span>
-                            <span className="orbit-node__label">{skill.name}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
+      <div className="skills-grid">
+        {skillCategories.map((category, idx) => (
+          <div key={idx} className={`skill-box glass-panel animate-on-scroll reveal-up delay-${(idx % 3) + 1}`}>
+            <h3 className="skill-box__title">{category.title}</h3>
+            <div className="skill-box__list">
+              {category.skills.map((skill, sIdx) => (
+                <div key={sIdx} className="skill-pill">
+                  {skill.icon && <img src={skill.icon} alt={`${skill.name} icon`} className="skill-icon" />}
+                  <span className="skill-name">{skill.name}</span>
                 </div>
-              </div>
-
+              ))}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </section>
   );

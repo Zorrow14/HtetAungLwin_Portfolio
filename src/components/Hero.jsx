@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
+import profileImg from '../assets/profile.jpg';
 
 const Hero = () => {
   const [text, setText] = useState('');
@@ -58,28 +59,12 @@ const Hero = () => {
             with strong backend foundations and practical user-focused design.
           </p>
 
-          <div className="hero-internship-card delay-3">
-            <div className="hero-internship-card__top">
-              <span className="hero-internship-card__dot"></span>
-              <span>Open to Internship</span>
-            </div>
-
-            <div className="hero-internship-card__content">
-              <div>
-                <small>Role</small>
-                <strong>Software / React / Full Stack Developer</strong>
-              </div>
-
-              <div>
-                <small>Available</small>
-                <strong>20 July 2026 – 9 October 2026</strong>
-              </div>
-
-              <div>
-                <small>Location</small>
-                <strong>Kuala Lumpur / Remote</strong>
-              </div>
-            </div>
+          <div className="hero-status-card delay-3">
+            <span className="hero-status-card__dot"></span>
+            <span className="hero-status-card__text">
+              Currently working as a <strong>Software Developer Intern</strong> at{' '}
+              <strong>MOCOF Sdn Bhd</strong>
+            </span>
           </div>
 
           <div className="cta-buttons delay-3">
@@ -96,6 +81,14 @@ const Hero = () => {
 
             <a href="#contact" className="btn">Get In Touch</a>
           </div>
+        </div>
+
+        <div className="hero-photo-wrapper animate-on-scroll reveal-right delay-2">
+          <div className="hero-photo-frame">
+            <img src={profileImg} alt="Htet Aung Lwin" className="hero-photo" />
+            <div className="hero-photo-overlay"></div>
+          </div>
+          <div className="hero-photo-ring"></div>
         </div>
       </div>
 
