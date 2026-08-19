@@ -27,16 +27,6 @@ const ProjectDemo = () => {
       actionText: "VIEW SOURCE ↗︎"
     },
     {
-      title: "TimeSlot API",
-      label: "Concurrency-Safe Booking API",
-      websiteUrl: null,
-      youtubeId: "",
-      description: "Live interactive Swagger docs: try the booking endpoints directly and see the double-booking guard in action. First request may take ~50s to wake the free-tier instance.",
-      tech: ["FastAPI", "PostgreSQL", "JWT"],
-      actionLink: "https://timeslot-api.onrender.com/docs",
-      actionText: "VIEW LIVE API DOCS ↗︎"
-    },
-    {
       title: "AuraGains",
       label: "Social Fitness Platform",
       youtubeId: "",
@@ -67,26 +57,6 @@ const ProjectDemo = () => {
       actionText: "VIEW SOURCE (ONGOING) ↗︎",
       ongoing: true
     },
-    {
-      title: "Expense Manager",
-      label: "CLI Application",
-      youtubeId: "",
-      websiteUrl: null,
-      description: "CLI walkthrough: adding, categorising, and exporting transactions with JSON persistence.",
-      tech: ["Python", "JSON"],
-      actionLink: "https://github.com/Zorrow14/Expense_Management_System_PY",
-      actionText: "VIEW SOURCE ↗︎"
-    },
-    {
-      title: "EduManage",
-      label: "Student Portal",
-      youtubeId: "",
-      websiteUrl: null,
-      description: "Auth flow, grade viewing, and the collaborative academic dashboard in action.",
-      tech: ["Python"],
-      actionLink: "https://github.com/lw112k/Education-Management-System-PY",
-      actionText: "VIEW SOURCE ↗︎"
-    }
   ];
 
   const handleTabChange = (idx) => {
