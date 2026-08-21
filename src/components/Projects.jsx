@@ -3,26 +3,6 @@ import './Projects.css';
 
 const projectData = [
   {
-    title: 'TimeSlot API',
-    tag: 'Backend / API Project',
-    details: [
-      {
-        label: 'Problem',
-        text: 'Naive booking systems check "is this slot free?" then insert — a gap where two requests racing at the same instant can both succeed and double-book the same resource.',
-      },
-      {
-        label: 'Built',
-        text: 'A FastAPI + PostgreSQL booking API with JWT auth that closes the race two ways: a service-layer overlap check for clean rejections, plus a PostgreSQL EXCLUDE constraint that guarantees no two confirmed bookings can ever overlap, even under concurrent writes.',
-      },
-      {
-        label: 'Impact',
-        text: 'Demonstrates backend fundamentals beyond CRUD — database-level correctness guarantees, race-condition testing, and a production-style API with interactive docs.',
-      },
-    ],
-    tech: ['FastAPI', 'PostgreSQL', 'JWT', 'Alembic'],
-    link: 'https://timeslot-api.onrender.com/docs',
-  },
-  {
     title: 'CareerSync AI',
     tag: 'AI Hackathon Project',
     details: [

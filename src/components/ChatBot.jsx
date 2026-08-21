@@ -27,51 +27,44 @@ Databases: MySQL, PostgreSQL, MongoDB
 Tools & Deployment: Git, GitHub, Vercel, Render, Vite, Figma, VS Code
 
 == PHILOSOPHY ==
-Htet prioritizes understanding core mechanics over any single framework. He has shipped production work across JavaScript/TypeScript, Python, and Java — a FastAPI + PostgreSQL booking service with database-level concurrency guarantees, React/Next.js frontends, a Flutter mobile app, and serverless AI chatbots on the Gemini and Groq APIs. That range lets him pick the right tool for the problem instead of forcing every project through the same stack. He is not limited to the MERN stack.
+Htet prioritizes understanding core mechanics over any single framework. He has shipped production work across JavaScript/TypeScript, Python, and Java — React/Next.js frontends, a Flutter mobile app, and serverless AI chatbots on the Gemini and Groq APIs. That range lets him pick the right tool for the problem instead of forcing every project through the same stack. He is not limited to the MERN stack.
 
 == PROJECTS ==
-1. TimeSlot API
-   - Backend booking/reservation REST API where the core guarantee is that the same resource can never be double-booked, even under concurrent requests
-   - Closes the race two ways: a service-layer overlap check plus a PostgreSQL EXCLUDE constraint proven with an automated concurrency test
-   - Tech: FastAPI, PostgreSQL, JWT, Alembic
-   - Live API docs: https://timeslot-api.onrender.com/docs
-   - GitHub: https://github.com/Zorrow14/TimeSlot_API
-
-2. CareerSync AI
+1. CareerSync AI
    - AI-powered Career OS with candidate, employer, and university portals: job-match scoring, skill-gap detection, AI roadmaps, mock interviews
    - Built solo for the Talentbank Tech Hackathon 2026
    - Tech: React, Vite, AI/UX Design
    - Live: https://careersync-ai-careeros.vercel.app/
    - GitHub: https://github.com/Zorrow14/careersync-ai
 
-3. MOCOF Chatbot
+2. MOCOF Chatbot
    - Internship project: a serverless AI chatbot ("Moco") built for a furniture/interior design client during an internship placement
    - Composes curated knowledge-based prompts, calls Gemini, computes cabinetry price estimates in code, and verifies every price against real business data before replying to guard against hallucinated quotes
    - Tech: Node.js, Vercel Functions, Gemini API, CI/CD
    - Live: https://mocof-chatbot.vercel.app
    - GitHub: https://github.com/Zorrow14/mocof-chatbot
 
-4. AuraGains
+3. AuraGains
    - Native Android full-stack social fitness platform to combat gym anxiety
    - Custom workout protocol builders and rich media social feed with dynamic privacy logic
    - Flutter + Supabase using strict MVVM architecture
    - Tech: Flutter, Supabase, Dart, Provider
    - GitHub: https://github.com/lw112k/AuraGains
 
-5. EcoQuest Website
+4. EcoQuest Website
    - Core administrative infrastructure for a sustainability-focused web platform
    - Real-time admin dashboard and comprehensive user management system
    - Automated moderation log for community accountability
    - Tech: PHP, MySQL, JavaScript, HTML/CSS
    - GitHub: https://github.com/lw112k/EcoQuest
 
-6. Sprout
+5. Sprout
    - Personal product: a local-first, installable habit-tracking PWA
    - Habits are plants that softly wilt instead of hard-resetting on a missed day; includes a "Craving SOS" tool for quit-habits
    - Tech: React, Vite, IndexedDB, PWA
    - GitHub: https://github.com/Zorrow14/Sprout
 
-7. DevPilot (ONGOING — currently in active development, not finished)
+6. DevPilot (ONGOING — currently in active development, not finished)
    - Full-stack developer growth platform: skill tracker, project planner, AI-generated learning roadmaps, internship-readiness score
    - Tech: Next.js, Express.js, PostgreSQL, Prisma, Firebase Authentication
    - GitHub: https://github.com/Zorrow14/DevPilot
