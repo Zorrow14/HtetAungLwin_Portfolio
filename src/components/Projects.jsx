@@ -28,19 +28,19 @@ const projectData = [
     details: [
       {
         label: 'Problem',
-        text: 'A furniture and interior design business needed an always-on assistant that could answer product questions and quote custom cabinetry prices — without ever misquoting a customer.',
+        text: 'A Malaysian furniture and interior design business needed an always-on assistant that could answer product questions, quote custom wall bed and cabinetry prices, and take reservation deposits — without ever misquoting a customer.',
       },
       {
         label: 'Built',
-        text: 'A production, Vercel-hosted chatbot ("Moco") that assembles a curated knowledge-based system prompt, calls the Gemini API for responses, computes cabinetry price estimates in code, and verifies every price the model outputs against real business data before it reaches a customer.',
+        text: 'A production, Vercel-hosted chatbot ("Moco") that routes a modular product knowledge base into the prompt, calls Gemini for responses, computes surround-cabinetry estimates in code, and validates every RM amount the model outputs against the real price list before it reaches a customer. It now also takes Stripe FPX reservation deposits (amounts resolved server-side so the client can never tamper with them), logs each order to Google Sheets, emails confirmations via Resend, hands off to WhatsApp when a request falls outside the catalogue, and ships a passcode-gated staff page that turns plain-language order descriptions into real Stripe invoices.',
       },
       {
         label: 'Impact',
-        text: 'Real production client work delivered during an internship — shows I can ship a reliable, tested AI product with safety guardrails, not just a demo.',
+        text: 'Real production client work delivered during an internship — an AI product carrying payments, business data, and an offline test suite over its pricing and gating logic, with guardrails instead of blind trust in the model.',
       },
     ],
-    tech: ['Node.js', 'Vercel Functions', 'Gemini API', 'CI/CD'],
-    link: 'https://mocof-chatbot.vercel.app',
+    tech: ['Node.js', 'Vercel Functions', 'Gemini API', 'Stripe'],
+    link: 'https://github.com/Zorrow14/mocof-chatbot',
   },
   {
     title: 'AuraGains',
