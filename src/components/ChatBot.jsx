@@ -38,7 +38,7 @@ Htet prioritizes understanding core mechanics over any single framework. He has 
    - GitHub: https://github.com/Zorrow14/careersync-ai
 
 2. MOCOF Chatbot
-   - Internship project: a serverless AI chatbot ("Moco") built for a Malaysian furniture/interior design client during an internship placement
+   - Internship project: a serverless AI chatbot ("MOCOF CS") built for a Malaysian furniture/interior design client during an internship placement
    - Routes a modular product knowledge base into the prompt, calls Gemini, computes surround-cabinetry estimates in code, and validates every RM amount against the real price list before replying to guard against hallucinated quotes
    - Takes Stripe FPX reservation deposits with amounts resolved server-side (the client only sends option IDs, so deposit amounts cannot be tampered with), logs orders to Google Sheets, and sends confirmation emails via Resend
    - Offers WhatsApp handoff when a request falls outside the catalogue, plus a passcode-gated staff page that turns plain-language order descriptions into real Stripe invoices

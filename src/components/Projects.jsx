@@ -32,7 +32,7 @@ const projectData = [
       },
       {
         label: 'Built',
-        text: 'A production, Vercel-hosted chatbot ("Moco") that routes a modular product knowledge base into the prompt, calls Gemini for responses, computes surround-cabinetry estimates in code, and validates every RM amount the model outputs against the real price list before it reaches a customer. It now also takes Stripe FPX reservation deposits (amounts resolved server-side so the client can never tamper with them), logs each order to Google Sheets, emails confirmations via Resend, hands off to WhatsApp when a request falls outside the catalogue, and ships a passcode-gated staff page that turns plain-language order descriptions into real Stripe invoices.',
+        text: 'A production, Vercel-hosted chatbot ("MOCOF CS") that routes a modular product knowledge base into the prompt, calls Gemini for responses, computes surround-cabinetry estimates in code, and validates every RM amount the model outputs against the real price list before it reaches a customer. It now also takes Stripe FPX reservation deposits (amounts resolved server-side so the client can never tamper with them), logs each order to Google Sheets, emails confirmations via Resend, hands off to WhatsApp when a request falls outside the catalogue, and ships a passcode-gated staff page that turns plain-language order descriptions into real Stripe invoices.',
       },
       {
         label: 'Impact',
