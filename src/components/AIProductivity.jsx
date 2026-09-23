@@ -50,15 +50,7 @@ const aiTools = [
   {
     name: 'AI Agents',
     customIcon: <AgentIcon />,
-  },
-  {
-    name: 'Prompt Engineering',
-    fallback: '⌘',
-  },
-  {
-    name: 'AI-Assisted Coding',
-    fallback: '</>',
-  },
+  }
 ];
 
 const AIProductivity = () => {
