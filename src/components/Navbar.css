@@ -1,38 +1,56 @@
+/* ── Navbar shell ────────────────────────────────────────────────── */
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   padding: 25px 10%;
   z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    padding 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
   animation: navbarEntrance 1s ease-out forwards;
+}
+
+/* Solid-enough glass so content never bleeds through the bar or the
+   mobile dropdown. Applied when scrolled OR when the mobile menu is open
+   (the menu used to render with no background at the top of the page). */
+.navbar.scrolled,
+.navbar.menu-open {
+  background: rgba(12, 12, 26, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: rgba(240, 180, 41, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(10, 10, 15, 0.9), 0 1px 15px rgba(240, 180, 41, 0.1);
 }
 
 .navbar.scrolled {
   padding: 14px 10%;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid rgba(240, 180, 41, 0.2);
-  box-shadow: 0 10px 30px -10px rgba(10, 10, 15, 0.9), 0 1px 15px rgba(240, 180, 41, 0.1);
 }
 
 .nav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
 }
 
+/* ── Logo ────────────────────────────────────────────────────────── */
 .logo {
+  flex-shrink: 0;
   font-family: var(--font-display);
   font-size: 2rem;
   font-weight: 700;
-  cursor: pointer;
+  line-height: 1.2;
   letter-spacing: 0;
+  text-decoration: none;
+  cursor: pointer;
   position: relative;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .logo:hover {
@@ -40,11 +58,14 @@
   transform: scale(1.05);
 }
 
+/* ── Desktop links ───────────────────────────────────────────────── */
 .nav-links {
   display: flex;
+  flex-wrap: nowrap;
   list-style: none;
   align-items: center;
   gap: 30px;
+  min-width: 0;
 }
 
 .nav-links li {
@@ -52,6 +73,8 @@
 }
 
 .nav-links a {
+  display: inline-block;
+  white-space: nowrap;
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
@@ -61,7 +84,7 @@
   transition: color 0.3s ease;
 }
 
-/* Futuristic tracking underline animation */
+/* Tracking underline */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -74,30 +97,28 @@
   box-shadow: 0 0 8px var(--neon-cyan);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--neon-cyan);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
 }
 
-.nav-links .btn {
-  padding: 10px 22px;
-  font-size: 0.9rem;
+/* Tighten spacing on narrow desktops so six links + logo fit on one line */
+@media (max-width: 1200px) {
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+  }
 }
 
-/* Suppress the underline sweep on the button */
-.nav-links .btn::after {
-  display: none;
-}
-
-/* Keep the hover colour consistent with .btn base */
-.nav-links .btn:hover {
-  color: var(--neon-cyan);
-}
-
-/* Entrance Animations */
+/* ── Entrance animation ──────────────────────────────────────────── */
 @keyframes navbarEntrance {
   from {
     transform: translateY(-100%);
@@ -114,12 +135,19 @@
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
+  /* 44x44 touch target */
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
   background: none;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  padding: 4px;
+  padding: 0;
   z-index: 1001;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .hamburger span {
@@ -143,46 +171,62 @@
   list-style: none;
   flex-direction: column;
   gap: 0;
-  overflow: hidden;
   max-height: 0;
-  transition: max-height 0.35s ease, padding 0.35s ease;
+  overflow: hidden;
+  /* Keep hidden links out of the tab order while closed */
+  visibility: hidden;
   padding: 0 5%;
+  transition:
+    max-height 0.35s ease,
+    padding 0.35s ease,
+    visibility 0s linear 0.35s;
 }
 
 .mobile-links.open {
-  max-height: 400px;
-  padding: 16px 5% 24px;
+  max-height: min(70vh, 480px);
+  overflow-y: auto;
+  visibility: visible;
+  padding: 8px 5% 20px;
+  transition:
+    max-height 0.35s ease,
+    padding 0.35s ease,
+    visibility 0s;
 }
 
 .mobile-links li a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 10px 12px;
+  margin-left: -12px;
+  margin-right: -12px;
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
   font-size: 1.05rem;
-  padding: 12px 0;
+  border-left: 2px solid transparent;
   border-bottom: 1px solid var(--glass-border);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .mobile-links li:last-child a {
   border-bottom: none;
-  margin-top: 8px;
 }
 
 .mobile-links li a:hover {
   color: var(--neon-cyan);
 }
 
-.mobile-links .btn {
-  display: inline-block;
-  padding: 10px 24px;
-  font-size: 0.95rem;
-  border-bottom: none !important;
+.mobile-links li a.active {
+  color: var(--neon-cyan);
+  border-left-color: var(--neon-cyan);
+  background: rgba(240, 180, 41, 0.06);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+/* Below 1024px the six desktop links no longer fit on one line, so the
+   hamburger takes over. Keep in sync with MOBILE_BREAKPOINT in Navbar.jsx. */
+@media (max-width: 1024px) {
   .navbar {
     padding: 20px 5%;
   }
@@ -203,18 +247,3 @@
   }
 }
 
-.logo {
-  text-decoration: none;
-}
-
-.nav-links a.active {
-  color: var(--neon-cyan);
-}
-
-.nav-links a.active::after {
-  width: 100%;
-}
-
-.mobile-links li a.active {
-  color: var(--neon-cyan);
-}

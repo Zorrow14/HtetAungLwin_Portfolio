@@ -114,6 +114,10 @@
   font-weight: 700;
   color: var(--text-secondary);
   margin-bottom: 30px;
+  /* Reserve two lines so the typewriter wrapping/unwrapping never
+     changes the hero height and shifts the sections below it. */
+  min-height: 3.2em;
+  min-height: 2lh;
 }
 
 .description {

@@ -31,6 +31,20 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Deep links (e.g. /#projects): the browser's own hash scroll fires before
+  // React has rendered the sections, so jump to the target once mounted.
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!id) return;
+
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: 'instant', block: 'start' });
+    });
+  }, []);
+
   return (
     <>
       <div className="bg-animation"></div>
