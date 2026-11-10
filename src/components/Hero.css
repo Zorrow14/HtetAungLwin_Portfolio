@@ -44,6 +44,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* The source photo is a wide street-side profile shot; zoom the circular
+     crop onto the face (which sits around 46% across, 36% down the image; the origin is nudged left so the profile has breathing room in front of it). */
+  object-position: 40% 38%;
+  transform: scale(1.5);
+  transform-origin: 40% 38%;
   filter: contrast(1.1) brightness(0.92);
 }
 
