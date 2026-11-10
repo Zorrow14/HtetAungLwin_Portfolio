@@ -5,27 +5,6 @@
   overflow: hidden;
 }
 
-/* Cinematic letterbox bars — widescreen film framing for the hero only */
-.hero-section::before,
-.hero-section::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: clamp(18px, 4vh, 48px);
-  background: #000;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.hero-section::before {
-  top: 0;
-}
-
-.hero-section::after {
-  bottom: 0;
-}
-
 .hero-grid {
   display: flex;
   align-items: center;
