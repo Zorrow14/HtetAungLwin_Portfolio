@@ -8,13 +8,43 @@ const ProjectDemo = () => {
   const demos = [
     {
       title: "CareerSync AI",
-      label: "AI Career OS Platform",
+      label: "Top 80 · Talentbank Tech Hackathon 2026",
       websiteUrl: "https://careersync-ai-careeros.vercel.app/",
       youtubeId: null,
-      description: "Live embedded walkthrough: explore the candidate, employer, and university portals, built for the Talentbank Tech Hackathon 2026.",
-      tech: ["React", "Vite", "AI/UX Design"],
+      description: "Live embedded walkthrough: explore the Candidate, Employer and University portals — explainable job-match scoring, skill-gap detection, AI roadmaps and mock interviews.",
+      tech: ["React", "Vite", "Tailwind CSS"],
       actionLink: "https://careersync-ai-careeros.vercel.app/",
       actionText: "LAUNCH LIVE SITE ↗︎"
+    },
+    {
+      title: "MOCOF AI Sales Chatbot",
+      label: "Internship · Production AI Assistant",
+      websiteUrl: null,
+      youtubeId: null,
+      description: "Gemini-powered sales assistant with live surround-cabinetry quoting, a pricing guardrail on every RM amount, Stripe Checkout deposits and a human-confirmed staff invoice tool.",
+      tech: ["Node.js", "Gemini API", "Stripe"],
+      actionLink: "https://github.com/Zorrow14/mocof-chatbot",
+      actionText: "VIEW SOURCE ↗︎"
+    },
+    {
+      title: "Jarvis",
+      label: "Local-First Voice AI Assistant",
+      websiteUrl: null,
+      youtubeId: null,
+      description: "Agentic assistant with a custom tool-calling loop, wake-word activation, on-device STT/TTS and RAG memory over Chroma, packaged as a Tauri desktop app.",
+      tech: ["Python", "FastAPI", "Chroma", "Tauri"],
+      actionLink: "https://github.com/Zorrow14/personal-assistant",
+      actionText: "VIEW SOURCE ↗︎"
+    },
+    {
+      title: "Amber",
+      label: "Myanmar Development Simulation",
+      websiteUrl: null,
+      youtubeId: null,
+      description: "World Bank data pipeline, synthetic-control counterfactual and a calibrated system-dynamics model with live policy levers, served to a bilingual React + TypeScript app.",
+      tech: ["Python", "FastAPI", "React", "SciPy"],
+      actionLink: "https://github.com/Zorrow14/project-amber",
+      actionText: "VIEW SOURCE ↗︎"
     },
     {
       title: "EcoQuest",
@@ -31,31 +61,10 @@ const ProjectDemo = () => {
       label: "Social Fitness Platform",
       youtubeId: "",
       websiteUrl: null,
-      description: "Preview the strict MVVM architecture and native Android hardware integrations.",
+      description: "Native Android social fitness app built in a student team with strict MVVM on Flutter and Supabase.",
       tech: ["Flutter", "Supabase", "Dart"],
-      actionLink: "https://drive.google.com/file/d/1E50Fhlve2BRHRDJg31YR2uwuzjz6tqAp/view?usp=drive_link", // <-- PUT YOUR GOOGLE DRIVE LINK HERE
+      actionLink: "https://drive.google.com/file/d/1E50Fhlve2BRHRDJg31YR2uwuzjz6tqAp/view?usp=drive_link",
       actionText: "DOWNLOAD APK ↓︎"
-    },
-    {
-      title: "Sprout",
-      label: "Habit Tracker PWA",
-      youtubeId: "",
-      websiteUrl: null,
-      description: "Source walkthrough: a local-first habit garden with a compassionate 'soft wilt' streak model and a Craving SOS tool.",
-      tech: ["React", "Vite", "IndexedDB"],
-      actionLink: "https://github.com/Zorrow14/Sprout",
-      actionText: "VIEW SOURCE ↗︎"
-    },
-    {
-      title: "DevPilot",
-      label: "Ongoing — AI Roadmap Platform",
-      youtubeId: "",
-      websiteUrl: null,
-      description: "Actively in development: a full-stack skill tracker, project planner, and AI roadmap generator for junior developers.",
-      tech: ["Next.js", "Express.js", "Prisma"],
-      actionLink: "https://github.com/Zorrow14/DevPilot",
-      actionText: "VIEW SOURCE (ONGOING) ↗︎",
-      ongoing: true
     },
   ];
 

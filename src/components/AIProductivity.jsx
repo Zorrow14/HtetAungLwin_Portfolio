@@ -48,7 +48,11 @@ const aiTools = [
     customIcon: <GroqIcon />,
   },
   {
-    name: 'AI Agents',
+    name: 'LLM Tool-Calling Agents',
+    customIcon: <AgentIcon />,
+  },
+  {
+    name: 'RAG (Chroma + fastembed)',
     customIcon: <AgentIcon />,
   }
 ];
@@ -64,10 +68,11 @@ const AIProductivity = () => {
       </h2>
 
       <p className="ai-productivity-intro">
-        I use AI tools to support coding, debugging, refactoring, documentation,
-        UI/UX exploration, and faster development workflows. My part-time prompt
-        engineering experience helps me create clearer prompts, structure better
-        AI outputs, and validate generated solutions before implementation.
+        AI is part of how I work and part of what I build. Day to day I use assistants
+        for scaffolding, debugging, refactoring and documentation, always validating
+        generated code before it ships. In my own projects I go further: Gemini and
+        Groq APIs, custom LLM tool-calling loops, RAG memory over Chroma, and guardrails
+        that check every model output against real pricing and business rules.
       </p>
 
       <div className="ai-tools-list">

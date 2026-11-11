@@ -61,23 +61,23 @@ const About = () => {
         {/* Existing Text Column */}
         <div className="about-text">
           <p>
-            I’m a final-semester Diploma in Software Engineering student at Asia Pacific University in Kuala Lumpur,
-            with a strong focus on Full Stack Development. My journey in technology is driven by a desire
-            to build functional, clean, and highly responsive applications that solve real problems across
-            various industries.
+            I’m a Software Engineering graduate (Diploma in ICT, Asia Pacific University, Kuala Lumpur)
+            who builds full-stack and AI-integrated applications end to end — from the data model and
+            API through to the interface people actually use.
           </p>
           <p>
-            In my technical approach, I prioritize a deep understanding of core mechanics over any single
-            framework. I’ve shipped production work across JavaScript/TypeScript, Python, and Java — from a
-            FastAPI + PostgreSQL booking service with database-level concurrency guarantees, to React and
-            Next.js frontends, to a Flutter mobile app, to serverless AI chatbots built on the Gemini and
-            Groq APIs. That range lets me pick the right tool for the problem instead of forcing every
-            project through the same stack.
+            My core stack is React and TypeScript on the frontend with Python/FastAPI and PostgreSQL
+            behind it, and I’ve shipped with Node.js, Flutter, PHP and Supabase as well. Lately my
+            focus has shifted towards AI engineering: LLM tool-calling loops, RAG memory with Chroma,
+            guardrails that verify model output against real business rules, and the testing and CI
+            discipline that makes those systems trustworthy.
           </p>
           <p>
-            I’m currently working as a Software Development Intern, contributing to production work
-            such as the MOCOF Chatbot project below. Alongside that, I continue building and shipping
-            my own projects, refining my engineering practices, and growing as a well-rounded developer.
+            As a Software Development Intern at MOCOF Sdn Bhd I built and deployed an AI sales chatbot
+            that quotes live cabinetry prices and takes Stripe deposits, and I led the frontend on
+            CareerSync AI, which placed in the Top 80 at the Talentbank Tech Hackathon 2026. Outside
+            work I keep building — a local-first voice assistant, a development simulation of Myanmar,
+            and a personal finance manager.
           </p>
 
           {/* Distinct Sections Grid */}
@@ -85,15 +85,15 @@ const About = () => {
             <div className="detail-box animate-on-scroll reveal-up delay-2">
               <h3>Education</h3>
               <p><strong>Asia Pacific University, Kuala Lumpur</strong></p>
-              <p>Diploma in ICT (Software Eng.)</p>
-              <p className="date">July 2024 – Present</p>
+              <p>Diploma in ICT (Software Engineering)</p>
+              <p className="date">July 2024 – 2026 · Completed</p>
             </div>
 
             <div className="detail-box animate-on-scroll reveal-up delay-3">
               <h3>Core Focus</h3>
-              <p><strong>Full Stack Development</strong></p>
-              <p>Web, Mobile & AI-backed Systems</p>
-              <p className="date">Frontend & Backend</p>
+              <p><strong>Full Stack & AI Engineering</strong></p>
+              <p>React, TypeScript, FastAPI, PostgreSQL</p>
+              <p className="date">Growing into AI Engineering & MLOps</p>
             </div>
           </div>
 

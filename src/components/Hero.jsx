@@ -9,9 +9,9 @@ const Hero = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const roles = [
-    'Aspiring Software Engineer.',
-    'Junior Full Stack Developer.',
-    'Problem Solver.',
+    'Software Engineering Graduate.',
+    'Full Stack Developer.',
+    'AI-Integrated App Builder.',
   ];
 
   useEffect(() => {
@@ -54,16 +54,16 @@ const Hero = () => {
           </h2>
 
           <p className="description delay-3">
-            Final-semester Diploma in Software Engineering student focused on React, Node.js,
-            and full-stack web development. I build clean, responsive applications
-            with strong backend foundations and practical user-focused design.
+            Software Engineering graduate (Diploma in ICT, Asia Pacific University) who builds
+            full-stack and AI-integrated applications end to end. Strong in React, TypeScript,
+            Python/FastAPI and PostgreSQL, with a growing focus on AI engineering and MLOps.
           </p>
 
           <div className="hero-status-card delay-3">
             <span className="hero-status-card__dot"></span>
             <span className="hero-status-card__text">
-              Currently working as a <strong>Software Developer Intern</strong> at{' '}
-              <strong>MOCOF Sdn Bhd</strong>
+              <strong>Software Dev Intern</strong> at <strong>MOCOF Sdn Bhd</strong>
+              {' '}· Top 80, Talentbank Tech Hackathon 2026
             </span>
           </div>
 
