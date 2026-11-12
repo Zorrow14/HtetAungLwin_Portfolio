@@ -175,7 +175,7 @@ const Contact = () => {
       iconSvg: <DownloadIcon />,
       label: 'CURRICULUM VITAE',
       value: 'Download CV — Htet Aung Lwin 2026',
-      href: 'https://drive.google.com/file/d/1-zwnKZ2s25sBOo6ToMY0QGA_lmLT2aMZ/view?usp=drive_link',
+      href: 'https://drive.google.com/file/d/1Cz2UIch-SMzFw90sd6QiacLskCBb83mO/view?usp=sharing',
       isCV: true,
     },
   ];

@@ -71,7 +71,7 @@ const Hero = () => {
             <a href="#projects" className="btn btn-primary">View Projects</a>
 
             <a
-              href="https://drive.google.com/file/d/1-zwnKZ2s25sBOo6ToMY0QGA_lmLT2aMZ/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1Cz2UIch-SMzFw90sd6QiacLskCBb83mO/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="btn hero-cv-btn"
