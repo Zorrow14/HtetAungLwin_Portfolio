@@ -83,26 +83,6 @@ const projectData = [
     link: 'https://github.com/Zorrow14/project-amber',
   },
   {
-    title: 'Money Atlas: Personal Finance Manager',
-    tag: 'Personal Project · Full Stack',
-    details: [
-      {
-        label: 'Problem',
-        text: 'Most personal finance apps either round money badly, hide where recurring charges go, or lock your data in. I wanted exact accounting with import/export I control.',
-      },
-      {
-        label: 'Built',
-        text: 'A finance tracker covering accounts, transactions, budgets, savings pots and recurring bills, with exact NUMERIC/Decimal money handling, CSV import/export and an accessible Recharts analytics dashboard. Includes a recurring-charge detector, an append-only savings ledger, Alembic migrations and Pytest/Vitest suites.',
-      },
-      {
-        label: 'Impact',
-        text: 'A typed React + FastAPI + PostgreSQL system with correctness where it matters most — money — and tests on both sides of the stack.',
-      },
-    ],
-    tech: ['React', 'TypeScript', 'FastAPI', 'PostgreSQL', 'SQLAlchemy'],
-    link: 'https://github.com/Zorrow14/FinanceManager',
-  },
-  {
     title: 'AuraGains',
     tag: 'Final Year Project · Group',
     details: [
@@ -141,46 +121,6 @@ const projectData = [
     ],
     tech: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS'],
     link: 'https://github.com/lw112k/EcoQuest',
-  },
-  {
-    title: 'Expense Management System',
-    tag: 'Personal Project · CLI',
-    details: [
-      {
-        label: 'Problem',
-        text: 'A simple, dependable way to record expenses and see where money goes, without a database server or a GUI.',
-      },
-      {
-        label: 'Built',
-        text: 'An object-oriented Python CLI application for tracking expenses and generating spending reports, persisted with JSON.',
-      },
-      {
-        label: 'Impact',
-        text: 'An early project that established the OOP habits and data-persistence patterns reused in later work.',
-      },
-    ],
-    tech: ['Python', 'JSON'],
-    link: 'https://github.com/Zorrow14/Expense_Management_System_PY',
-  },
-  {
-    title: 'Education Management System',
-    tag: 'Collaborative Academic Project',
-    details: [
-      {
-        label: 'Problem',
-        text: 'Students needed a single portal to log in securely, enrol in courses and view grades without manual admin steps.',
-      },
-      {
-        label: 'Built',
-        text: 'Engineered the Student Portal: secure authentication, automated course enrolment and a grade-viewing interface, as part of a collaborative Python project.',
-      },
-      {
-        label: 'Impact',
-        text: 'Ownership of a complete module inside a team codebase, with authentication and workflow logic done properly.',
-      },
-    ],
-    tech: ['Python'],
-    link: null,
   },
 ];
 
