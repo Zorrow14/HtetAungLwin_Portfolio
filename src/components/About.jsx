@@ -61,9 +61,10 @@ const About = () => {
         {/* Existing Text Column */}
         <div className="about-text">
           <p>
-            I’m a Software Engineering graduate (Diploma in ICT, Asia Pacific University, Kuala Lumpur)
-            who builds full-stack and AI-integrated applications end to end — from the data model and
-            API through to the interface people actually use.
+            I’m a software developer who recently completed a Diploma in ICT (Software Engineering)
+            at Asia Pacific University in Kuala Lumpur. I build full-stack and AI-integrated
+            applications end to end — from the data model and API through to the interface people
+            actually use.
           </p>
           <p>
             My core stack is React and TypeScript on the frontend with Python/FastAPI and PostgreSQL
@@ -73,11 +74,11 @@ const About = () => {
             discipline that makes those systems trustworthy.
           </p>
           <p>
-            As a Software Development Intern at MOCOF Sdn Bhd I built and deployed an AI sales chatbot
-            that quotes live cabinetry prices and takes Stripe deposits, and I led the frontend on
-            CareerSync AI, which placed in the Top 80 at the Talentbank Tech Hackathon 2026. Outside
-            work I keep building — a local-first voice assistant, a development simulation of Myanmar,
-            and a personal finance manager.
+            During my internship at MOCOF Sdn Bhd I built and deployed an AI sales chatbot that quotes
+            live cabinetry prices and takes Stripe deposits, and I led the frontend on CareerSync AI,
+            which placed in the Top 80 at the Talentbank Tech Hackathon 2026. With the internship and
+            my diploma now complete, I’m looking for a remote software engineering role where I can
+            keep building full-stack and AI-integrated products.
           </p>
 
           {/* Distinct Sections Grid */}

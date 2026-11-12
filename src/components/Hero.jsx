@@ -9,7 +9,7 @@ const Hero = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const roles = [
-    'Software Engineering Graduate.',
+    'Software Developer.',
     'Full Stack Developer.',
     'AI-Integrated App Builder.',
   ];
@@ -54,16 +54,17 @@ const Hero = () => {
           </h2>
 
           <p className="description delay-3">
-            Software Engineering graduate (Diploma in ICT, Asia Pacific University) who builds
-            full-stack and AI-integrated applications end to end. Strong in React, TypeScript,
-            Python/FastAPI and PostgreSQL, with a growing focus on AI engineering and MLOps.
+            Software developer who builds full-stack and AI-integrated applications end to end,
+            with a completed Diploma in ICT (Software Engineering) from Asia Pacific University.
+            Strong in React, TypeScript, Python/FastAPI and PostgreSQL, with a growing focus on
+            AI engineering and MLOps.
           </p>
 
           <div className="hero-status-card delay-3">
             <span className="hero-status-card__dot"></span>
             <span className="hero-status-card__text">
-              <strong>Software Dev Intern</strong> at <strong>MOCOF Sdn Bhd</strong>
-              {' '}· Top 80, Talentbank Tech Hackathon 2026
+              <strong>Open to remote roles</strong> · Full-stack &amp; AI engineering
+              {' '}· ex-Software Dev Intern, <strong>MOCOF Sdn Bhd</strong>
             </span>
           </div>
 
