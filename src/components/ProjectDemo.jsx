@@ -39,12 +39,12 @@ const ProjectDemo = () => {
     {
       title: "Amber",
       label: "Myanmar Development Simulation",
-      websiteUrl: null,
+      websiteUrl: "https://amber-sim.vercel.app/",
       youtubeId: null,
-      description: "World Bank data pipeline, synthetic-control counterfactual and a calibrated system-dynamics model with live policy levers, served to a bilingual React + TypeScript app.",
+      description: "Live embedded walkthrough: a World Bank data pipeline, a synthetic-control counterfactual and a calibrated system-dynamics model with policy levers you can pull, in a bilingual React + TypeScript app.",
       tech: ["Python", "FastAPI", "React", "SciPy"],
-      actionLink: "https://github.com/Zorrow14/project-amber",
-      actionText: "VIEW SOURCE ↗︎"
+      actionLink: "https://amber-sim.vercel.app/",
+      actionText: "LAUNCH LIVE SITE ↗︎"
     },
     {
       title: "EcoQuest",
